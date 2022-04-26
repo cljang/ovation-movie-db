@@ -1,9 +1,9 @@
-import Logo from './Logo';
-
 function Header() {
   return (
     <header className="app-header">
-      <Logo />
+      <div className="logo">
+        <h1>ovation.</h1>
+      </div>
     </header>
   );
 }
