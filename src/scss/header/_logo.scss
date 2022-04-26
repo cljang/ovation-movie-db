@@ -1,0 +1,13 @@
+@use "../variables" as *;
+
+.logo {
+  display: inline-block;
+
+  h1 {
+    color: $blue;
+    background: -webkit-linear-gradient(left, $blue 20%, $purple 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
