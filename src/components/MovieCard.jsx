@@ -1,4 +1,4 @@
-function MovieCard() {
+function MovieCard({movie}) {
 
   const poster = "https://www.themoviedb.org/t/p/original/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg";
   const title = "Spider-Man: No Way Home";

@@ -1,9 +1,9 @@
 const PageFavourite = () => {
 
   return (
-      <main>
+      <section>
           <h2>Favourite</h2>
-      </main>
+      </section>
   );
 
 };

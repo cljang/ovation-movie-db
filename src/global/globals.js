@@ -1,0 +1,1 @@
+export const endpointMovieSearch = "https://api.themoviedb.org/3/movie/"

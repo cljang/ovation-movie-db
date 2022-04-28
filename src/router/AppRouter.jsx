@@ -11,12 +11,14 @@ function AppRouter() {
       <Link to="#site-main" className="screen-reader-text">Skip to content</Link>
       <div className="site-wrapper">
         <Header />
-        <Routes>
-            <Route path="/" element={<PageHome />} />
-            <Route path="/about" element={<PageAbout />} />
-            <Route path="/favourites" element={<PageFavourite />} />
-            <Route path="*" element={<h2>404</h2>} />
-        </Routes>
+        <main>
+          <Routes>
+              <Route path="/" element={<PageHome />} />
+              <Route path="/about" element={<PageAbout />} />
+              <Route path="/favourites" element={<PageFavourite />} />
+              <Route path="*" element={<h2>404</h2>} />
+          </Routes>
+        </main>
         <Footer />
       </div>
     </BrowserRouter>
