@@ -1,12 +1,16 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import NavMain from "./NavMain";
+import { useSelector, useDispatch } from "react-redux"
+import { toggleNav } from "../features/navOpen/navOpenSlice";
 
 function Header() {
-  const [navOpen, setNavOpen] = useState(false)
+  
+  const navOpen = useSelector((state) => state.navOpen.value);
+  const dispatch = useDispatch();
 
   const handleNavButton = (e) => {
     e.preventDefault();
-    setNavOpen(!navOpen)
+    dispatch(toggleNav(navOpen))
   }
 
   return (
@@ -29,13 +33,7 @@ function Header() {
         <span className="bar" id="bar-2"></span>
         <span className="bar" id="bar-3"></span>
       </button>
-      <nav className={"navbar-nav" + (navOpen ? " navbar-toggled" : "")}>
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/favourites">Favourites</Link></li>
-        </ul>
-      </nav>
+      <NavMain />
     </header>
   );
 }
