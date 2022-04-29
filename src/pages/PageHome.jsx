@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { setMovieFilter } from "../features/movieFilter/movieFilterSlice"
 import { setMovieList } from "../features/movieList/movieListSlice"
 import { API_KEY } from "../global/api-key"
-import Movies from "../components/Movies";
+import MovieContainer from "../components/MovieContainer";
 
 const PageHome = () => {
   
@@ -49,7 +49,7 @@ const PageHome = () => {
                     {filter}
                   </button>
           })}
-          <Movies />
+          <MovieContainer />
       </section>
   );
 

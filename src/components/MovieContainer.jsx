@@ -2,13 +2,13 @@
 import { useSelector } from "react-redux"
 import MovieCard from "./MovieCard"
 
-function Movies() {
+function MovieContainer() {
   
   // Rendered Movie List
   const movieList = useSelector((state) => state.movieList.value);
   
   return (
-    <div className="movie-cards">
+    <div className="movie-container">
       {movieList.length > 0 && movieList.map((movie) => {
         return <MovieCard key={movie.id} 
                    movie={movie}
@@ -18,4 +18,4 @@ function Movies() {
   )
 }
 
-export default Movies
+export default MovieContainer
