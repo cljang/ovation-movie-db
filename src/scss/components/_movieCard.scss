@@ -18,6 +18,10 @@
     background-color: rgba($dark-blue, 0.75);
     font-size: 1rem;
     transition: opacity 0.2s ease-in-out;
+
+    .movie-overview {
+      font-size: 0.875rem;
+    }
   }
 
   &:hover {

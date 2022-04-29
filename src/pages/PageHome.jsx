@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useCallback } from "react"
 import { endpointMovieSearch } from "../global/globals"
 import { useSelector, useDispatch } from "react-redux"
 import { setMovieFilter } from "../features/movieFilter/movieFilterSlice"
@@ -15,26 +15,23 @@ const PageHome = () => {
   const dispatch = useDispatch()
 
   // Fetch movies 
-  const fetchMovies = async () => {
+  const fetchMovies = useCallback(async () => {
     const res = await fetch(`${endpointMovieSearch}${selectedMovieFilter}?api_key=${API_KEY}`);
     const data = await res.json();
     const selectedMovies = data.results;
+    console.log(selectedMovies);
     dispatch(setMovieList(selectedMovies));
-  }
+  },[selectedMovieFilter, dispatch])
 
-  // Fetch movies on page load
-  useEffect(() => {
-    fetchMovies();
-  },[])
-
+  // Function to change the movie filter state
   const handleFilterChange = (e) => {
     dispatch(setMovieFilter(e.target.value))    
   }
 
-  // Re-fetch movies if the selectedMovieFilter changes
+  // Re-fetch movies if the selectedMovieFilter changes - this will also occur on page load
   useEffect(() => {
     fetchMovies();
-  }, [selectedMovieFilter])
+  }, [selectedMovieFilter, fetchMovies])
   
 
   return (

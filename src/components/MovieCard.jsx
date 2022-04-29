@@ -8,7 +8,7 @@ function MovieCard({movie}) {
       <div className="movie-card-overlay">
         <p>{movie.vote_average}</p>
         <h3 className="movie-title">{movie.title}</h3>
-        <p className="movie-release-date">{movie.releaseDate}</p>
+        <p className="movie-release-date">{movie.release_date}</p>
         <p className="movie-overview">{movie.overview}</p>
       </div>
     </article>
