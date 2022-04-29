@@ -1,8 +1,8 @@
-@use "normalize";
+@use "./global/normalize";
 
-@use "typography";
+@use "./global/typography";
 
-@use "base";
+@use "./global/base";
 
 @use "./components/header";
 
