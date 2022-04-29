@@ -9,21 +9,18 @@ export const movieListSlice = createSlice({
   initialState,
   reducers: {
     setMovieList: (state, action) => {
-      state.value = action.payload;
+      state.value = [...action.payload];
     },
     clearMovieList: (state) => {
       state.value = [];
     },
-    pushMovie: (state, action) => {
-      state.value = [...state.value, action.payload];
-    },
-    popMovie: (state) => {
-      state.value = state.value.slice(0,-1)
+    addMovieList: (state, action) => {
+      state.value = [...state.value, ...action.payload];
     }
   }
 })
 
-export const {setMovieList, clearMovieList, pushMovie, popMovie} = movieListSlice.actions;
+export const {setMovieList, clearMovieList, addMovieList} = movieListSlice.actions;
 
 const movieListReducer = movieListSlice.reducer;
 export default movieListReducer;
