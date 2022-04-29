@@ -6,6 +6,7 @@ function MovieCard({movie}) {
     <article className="movie-card">
       <img src={`${pathToPoster}${movie.poster_path}`} alt={movie.title} className="movie-card-poster" />
       <div className="movie-card-overlay">
+        <p>{movie.vote_average}</p>
         <h3 className="movie-title">{movie.title}</h3>
         <p className="movie-release-date">{movie.releaseDate}</p>
         <p className="movie-overview">{movie.overview}</p>

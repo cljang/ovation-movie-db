@@ -12,12 +12,13 @@ const PageHome = () => {
   const selectedMovieFilter = useSelector((state) => state.movieFilter.value);
   const validMovieFilters = useSelector((state) => state.movieFilter.valid_values)
 
+  const dispatch = useDispatch()
+
   // Fetch movies 
   const fetchMovies = async () => {
     const res = await fetch(`${endpointMovieSearch}${selectedMovieFilter}?api_key=${API_KEY}`);
     const data = await res.json();
-    const selectedMovies = data.results.splice(0, 15);
-    console.log(selectedMovies);
+    const selectedMovies = data.results;
     dispatch(setMovieList(selectedMovies));
   }
 
@@ -26,13 +27,15 @@ const PageHome = () => {
     fetchMovies();
   },[])
 
-  const handleFilterChange = async (e) => {
-    await dispatch(setMovieFilter(e.target.value))
-    // Re-fetch movies
-    fetchMovies();
+  const handleFilterChange = (e) => {
+    dispatch(setMovieFilter(e.target.value))    
   }
+
+  // Re-fetch movies if the selectedMovieFilter changes
+  useEffect(() => {
+    fetchMovies();
+  }, [selectedMovieFilter])
   
-  const dispatch = useDispatch()
 
   return (
       <section className="page-home">
