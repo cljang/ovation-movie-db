@@ -1,17 +1,16 @@
+/*
+  Component to render a list of movies as a container of MovieCards Components
+*/
 
-import { useSelector } from "react-redux"
 import MovieCard from "./MovieCard"
 
-function MovieContainer() {
-  
-  // Rendered Movie List
-  const movieList = useSelector((state) => state.movieList.value);
+function MovieContainer( {movieList} ) {
   
   return (
     <div className="movie-container">
       {movieList.length > 0 && movieList.map((movie) => {
         return <MovieCard key={movie.id} 
-                   movie={movie}
+                          movie={movie}
         />
       })}
     </div>

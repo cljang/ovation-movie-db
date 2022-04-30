@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  default_value: "popular",
   valid_values: [
     "popular",
     "top_rated",
