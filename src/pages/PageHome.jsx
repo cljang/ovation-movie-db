@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect } from "react"
 import { endpointMovieSearch } from "../global/globals"
 import { useSelector } from "react-redux"
 import { API_KEY } from "../global/api-key"
