@@ -1,11 +1,11 @@
 import { useSelector, useDispatch } from "react-redux"
 import { setMovieFilter } from "../features/movieFilter/movieFilterSlice"
+import { movieFilters } from "../global/globals";
 
 function MovieFilter() {
   
   // Movie Filter
   const selectedMovieFilter = useSelector((state) => state.movieFilter.value);
-  const validMovieFilters = useSelector((state) => state.movieFilter.valid_values)
 
   const dispatch = useDispatch()
 
@@ -17,12 +17,12 @@ function MovieFilter() {
   
   return (
     <div className="movie-filter-selector">
-      {validMovieFilters.map((filter) => {
-        return <button key={filter} 
-                      value={filter}
+      {movieFilters.map((filter) => {
+        return <button key={filter.value} 
+                      value={filter.value}
                       onClick={handleFilterChange}
-                      className={"movie-filter" + (filter===selectedMovieFilter && " active")}>
-                {filter}
+                      className={"movie-filter" + (filter.value===selectedMovieFilter && " active")}>
+                {filter.text}
               </button>
       })}
     </div>
