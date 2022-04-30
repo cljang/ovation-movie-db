@@ -1,0 +1,10 @@
+@use "../global/variables" as *;
+
+.movie-filter-selector {
+  .movie-filter {
+
+    &.active {
+      background-color: $blue;
+    }
+  }
+}

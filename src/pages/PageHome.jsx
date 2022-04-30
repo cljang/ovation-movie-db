@@ -1,16 +1,15 @@
 import { useEffect, useCallback } from "react"
 import { endpointMovieSearch } from "../global/globals"
 import { useSelector, useDispatch } from "react-redux"
-import { setMovieFilter } from "../features/movieFilter/movieFilterSlice"
 import { setMovieList } from "../features/movieList/movieListSlice"
 import { API_KEY } from "../global/api-key"
 import MovieContainer from "../components/MovieContainer";
+import MovieFilter from "../components/MovieFilter"
 
 const PageHome = () => {
   
   // Movie Filter
   const selectedMovieFilter = useSelector((state) => state.movieFilter.value);
-  const validMovieFilters = useSelector((state) => state.movieFilter.valid_values)
 
   const dispatch = useDispatch()
 
@@ -19,14 +18,8 @@ const PageHome = () => {
     const res = await fetch(`${endpointMovieSearch}${selectedMovieFilter}?api_key=${API_KEY}`);
     const data = await res.json();
     const selectedMovies = data.results;
-    console.log(selectedMovies);
     dispatch(setMovieList(selectedMovies));
   },[selectedMovieFilter, dispatch])
-
-  // Function to change the movie filter state
-  const handleFilterChange = (e) => {
-    dispatch(setMovieFilter(e.target.value))    
-  }
 
   // Re-fetch movies if the selectedMovieFilter changes - this will also occur on page load
   useEffect(() => {
@@ -37,15 +30,7 @@ const PageHome = () => {
   return (
       <section className="page-home">
           <h2>Home</h2>
-          <h3>{selectedMovieFilter}</h3>
-          {/* Temp Filter Selector */}
-          {validMovieFilters.map((filter) => {
-            return <button key={filter} 
-                           value={filter}
-                           onClick={handleFilterChange}>
-                    {filter}
-                  </button>
-          })}
+          <MovieFilter />
           <MovieContainer />
       </section>
   );
