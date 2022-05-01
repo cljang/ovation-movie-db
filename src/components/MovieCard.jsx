@@ -62,7 +62,7 @@ function MovieCard({movie}) {
         <p className="movie-release-date">{movie.release_date}</p>
         {/* <p className="movie-overview">{movie.overview}</p> */}
         <p className="movie-overview">{formatOverview(movie.overview)}</p>
-        <Link to="/" className="movie-info-button">More Info</Link>
+        <Link to={`/movie/${movie.id}`} className="movie-info-button">More Info</Link>
       </div>
     </article>
   );

@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import PageHome from "../pages/PageHome";
 import PageAbout from "../pages/PageAbout";
 import PageFavourite from "../pages/PageFavourite";
+import PageMovie from "../pages/PageMovie";
 
 function AppRouter() {
   return (
@@ -16,6 +17,7 @@ function AppRouter() {
               <Route path="/" element={<PageHome />} />
               <Route path="/about" element={<PageAbout />} />
               <Route path="/favourites" element={<PageFavourite />} />
+              <Route path="/movie/:id" element={<PageMovie />} />
               <Route path="*" element={<h2>404</h2>} />
           </Routes>
         </main>

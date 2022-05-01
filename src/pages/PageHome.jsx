@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
-import { endpointMovieSearch } from "../global/globals"
 import { useSelector } from "react-redux"
+import { endpointMovieSearch } from "../global/globals"
 import { API_KEY } from "../global/api-key"
 import MovieContainer from "../components/MovieContainer";
 import MovieFilter from "../components/MovieFilter"
