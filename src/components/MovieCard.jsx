@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { pathToPoster } from "../global/globals";
+import placeholderPoster from "../images/placeholder_poster.png";
 
 function MovieCard({movie}) {
 
@@ -55,7 +56,7 @@ function MovieCard({movie}) {
 
   return (
     <article id={movieCardID} className="movie-card">
-      <img src={`${pathToPoster}${movie.poster_path}`} alt={movie.title} className="movie-card-poster" />
+      <img src={movie.poster_path ? `${pathToPoster}${movie.poster_path}` : placeholderPoster} alt={movie.title} className="movie-card-poster" />
       <div className="movie-card-overlay"  style={style}>
         <p className="movie-rating">{movie.vote_average}</p>
         <h3 className="movie-title">{movie.title}</h3>
