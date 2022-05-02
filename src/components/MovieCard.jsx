@@ -19,7 +19,7 @@ function MovieCard({movie}) {
       // Take a fraction of the card's width and use it to set the nearest whole font size 
       // 0.054 is experimentally found to give a font size of 15px at 360px viewport width
       const relativeFontSize = elementWidth*0.05;
-      const roundedFontSize = Math.round(relativeFontSize);
+      // const roundedFontSize = Math.round(relativeFontSize);
 
       setFontSize(relativeFontSize)
     }
@@ -34,25 +34,25 @@ function MovieCard({movie}) {
   }
 
   // Format long overviews to be less than a specified character limit
-  const formatOverview = (str="", characterLimit=200) => {
-    if (str.length > characterLimit) {
-      // Find the index of the last space before the characterLimit (to find last whole word before characterLimit)
-      let lastSpace = str.slice(0,characterLimit).lastIndexOf(" ");
+  // const formatOverview = (str="", characterLimit=200) => {
+  //   if (str.length > characterLimit) {
+  //     // Find the index of the last space before the characterLimit (to find last whole word before characterLimit)
+  //     let lastSpace = str.slice(0,characterLimit).lastIndexOf(" ");
 
-      // Slice front and back half of string around the last space
-      let strFront = str.slice(0, lastSpace);
-      let strBack = str.slice(lastSpace);
+  //     // Slice front and back half of string around the last space
+  //     let strFront = str.slice(0, lastSpace);
+  //     let strBack = str.slice(lastSpace);
 
-      return (
-        <>
-          {strFront}...
-          <span className="hidden">{strBack}</span>
-        </>
-      )
-    } else {
-      return str;
-    }
-  }
+  //     return (
+  //       <>
+  //         {strFront}...
+  //         <span className="hidden">{strBack}</span>
+  //       </>
+  //     )
+  //   } else {
+  //     return str;
+  //   }
+  // }
 
   return (
     <article id={movieCardID} className="movie-card">
@@ -61,8 +61,8 @@ function MovieCard({movie}) {
         <p className="movie-rating">{movie.vote_average}</p>
         <h3 className="movie-title">{movie.title}</h3>
         <p className="movie-release-date">{movie.release_date}</p>
-        {/* <p className="movie-overview">{movie.overview}</p> */}
-        <p className="movie-overview">{formatOverview(movie.overview)}</p>
+        <p className="movie-overview">{movie.overview}</p>
+        {/* <p className="movie-overview">{formatOverview(movie.overview)}</p> */}
         <Link to={`/movie/${movie.id}`} className="movie-info-button">More Info</Link>
       </div>
     </article>
