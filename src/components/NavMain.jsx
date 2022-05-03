@@ -18,7 +18,7 @@ function NavMain() {
       <ul>
         {navMainLinks.map(link => {
           return(
-            <li>
+            <li key={link.name}>
               <NavLink to={link.path}
                        onClick={hideNav}>
                 {link.name}
