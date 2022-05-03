@@ -1,8 +1,19 @@
+import { useState, useEffect } from "react";
+import { localListName, getFavouritesList } from "../global/globals";
+
 const PageFavourite = () => {
+
+  const [favouritesList, setFavouritesList] = useState();
+  useEffect(() => {
+    setFavouritesList(getFavouritesList());
+  }, [])
 
   return (
       <section>
           <h2>Favourite</h2>
+          <ul>
+            {favouritesList && favouritesList.map((id) => <li>{id}</li>)}
+          </ul>
       </section>
   );
 
