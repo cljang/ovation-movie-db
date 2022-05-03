@@ -12,7 +12,7 @@ const PageFavourite = () => {
       <section>
           <h2>Favourite</h2>
           <ul>
-            {favouritesList && favouritesList.map((id) => <li>{id}</li>)}
+            {favouritesList && favouritesList.map((id) => <li key={id}>{id}</li>)}
           </ul>
       </section>
   );
