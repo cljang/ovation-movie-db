@@ -31,7 +31,7 @@ function FavouriteHeart( {movieID} ) {
   }, [movieID])
 
   return (
-    <button className={"favourite-heart" + (favourited ? " favourited" : "")} onClick={toggleHeart}>
+    <button className={"favourite-heart" + (favourited ? " favourite" : " no-favourite")} onClick={toggleHeart}>
       {favourited ? <FaHeart /> : <FaRegHeart />}
     </button>
   )

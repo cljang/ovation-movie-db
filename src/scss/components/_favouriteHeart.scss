@@ -1,6 +1,7 @@
 @use "../global/variables" as *;
 
 .favourite-heart {
+  padding: 1rem;
   background: none;
   border: none;
   color: $white;
@@ -10,25 +11,50 @@
     color: $blue;
   }
 
-  &.favourited {
+  &.favourite {
     animation-name: favourited;
     animation-duration: 0.5s;
   }
-
-}
-
-@keyframes favourited {
-  0% {
-    transform: scale(1);
+  
+  &.no-favourite {
+    animation-name: unfavourited;
+    animation-duration: 0.5s;
   }
 
-  50% {
-    transform: scale(1.25);
-    color: $blue;
+  svg {
+    display: block;
   }
   
-  100% {
-    transform: scale(1);
-    color: $white;
+  @keyframes favourited {
+    0% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.25);
+      color: $blue;
+    }
+    
+    100% {
+      transform: scale(1);
+      color: $white;
+    }
+  }
+
+  
+  @keyframes unfavourited {
+    0% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(0.75);
+      color: $blue;
+    }
+    
+    100% {
+      transform: scale(1);
+      color: $white;
+    }
   }
 }

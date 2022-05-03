@@ -15,10 +15,11 @@
 
   &-overlay {
     opacity: 0;
-    // display: flex;
-    // flex-wrap: wrap;
-    // justify-content: space-between;
-    // align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: flex-start;
     position: absolute;
     inset: 0;
     padding: 1rem;
@@ -26,7 +27,12 @@
     font-size: 1rem;
     transition: opacity 0.2s ease-in-out;
 
+    .movie-rating {
+      margin: 0;
+    }
+
     .movie-title {
+      width: 100%;
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
