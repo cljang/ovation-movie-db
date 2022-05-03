@@ -20,3 +20,16 @@ export const movieFilters = [
     value: "now_playing"
   },
 ]
+
+// Get localStorage favourites list as an array
+export const localListName = "favouriteList";
+export const getFavouritesList = () => {
+  // Create an array of favourites and copy the local storage list if it exists
+  const localListString = localStorage.getItem(localListName)
+  let localListArr = [];
+  if (localListString !== null && localListString !== "") {
+    localListArr = localListString.split(",");
+  }
+
+  return localListArr;
+}

@@ -1,23 +1,10 @@
 import { useState, useEffect } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { localListName, getFavouritesList } from "../global/globals";
 
 function FavouriteHeart( {movieID} ) {
 
   const [favourited, setFavourited] = useState(false)
-  
-  const localListName = "favouriteList";
-
-  // Get localStorage favourites list as an array
-  const getFavouritesList = () => {
-    // Create an array of favourites and copy the local storage list if it exists
-    const localListString = localStorage.getItem(localListName)
-    let localListArr = [];
-    if (localListString !== null && localListString !== "") {
-      localListArr = localListString.split(",");
-    }
-
-    return localListArr;
-  }
 
   // Switch heart state and update local storage for favouriteList
   const toggleHeart = () => {
