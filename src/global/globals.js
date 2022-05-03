@@ -21,6 +21,22 @@ export const movieFilters = [
   },
 ]
 
+// Main Navbar Links
+export const navMainLinks = [
+  {
+    name: "Home",
+    path: "/"
+  },
+  {
+    name: "About",
+    path: "/about"
+  },
+  {
+    name: "Favourites",
+    path: "/favourites"
+  },
+]
+
 // Get localStorage favourites list as an array
 export const localListName = "favouriteList";
 export const getFavouritesList = () => {
