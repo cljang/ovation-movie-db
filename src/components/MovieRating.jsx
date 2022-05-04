@@ -1,7 +1,7 @@
 
 import { FaStar as FullStar, FaStarHalfAlt as HalfStar, FaRegStar as EmptyStar } from "react-icons/fa";
 
-function StarRating( {rating} ) {
+function MovieRating( {rating} ) {
 
   const roundToStep =  (val, step=1) => {
     if (val !== 0) {
@@ -38,15 +38,18 @@ function StarRating( {rating} ) {
   
 
   return (
-    <div className="star-rating">
-      {/* Render rating as stars /5 */}
-      {getStars().map((star) => star)}
+    <div className="movie-rating">
+      <div className="star-rating">
+        {/* Render rating as stars /5 */}
+        {getStars().map((star) => star)}
+      </div>
+      <span className="score-rating .screen-reader-text">{rating*10}%</span>
     </div>
   )
 }
 
-StarRating.defaultProps = {
+MovieRating.defaultProps = {
   rating: 0,
 }
 
-export default StarRating
+export default MovieRating
