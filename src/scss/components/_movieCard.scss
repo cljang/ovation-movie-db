@@ -26,9 +26,10 @@
       "title title title title title title"
       "date date date date date date"
       "overview overview overview overview overview overview"
+      ". . . . . ."
       ". button button button button .";
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(6, min-content);
+    grid-template-rows: repeat(4, min-content) 1fr min-content;
     align-content: center;
     position: absolute;
     inset: 0;
@@ -77,7 +78,7 @@
     .movie-info-button {
       grid-area: button;
       text-align: center;
-      margin: 1rem 0;
+      margin-bottom: 1rem;
       background-color: $blue;
       color: $white;
       text-decoration: none;
