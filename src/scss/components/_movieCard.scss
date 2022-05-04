@@ -28,7 +28,8 @@
       "overview overview overview overview overview overview"
       ". button button button button .";
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(3, min-content) 1fr min-content;
+    grid-template-rows: repeat(6, min-content);
+    align-content: center;
     position: absolute;
     inset: 0;
     padding: 1rem;
@@ -63,10 +64,10 @@
     .movie-overview {
       grid-area: overview;
       overflow: hidden;
-      // display: -webkit-box;
-      // -webkit-line-clamp: 4;
-      // -webkit-box-orient: vertical;  
-      flex-grow: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;  
+      
 
       .hidden {
         display: none;
@@ -76,12 +77,7 @@
     .movie-info-button {
       grid-area: button;
       text-align: center;
-      // width: 10rem;
-      // position: absolute;
-      // bottom: 2rem;
-      // left: 50%;
-      // transform: translateX(-50%);
-      // white-space: nowrap;
+      margin: 1rem 0;
       background-color: $blue;
       color: $white;
       text-decoration: none;
