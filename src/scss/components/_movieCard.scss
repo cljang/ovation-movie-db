@@ -15,6 +15,7 @@
 
   &-overlay {
     opacity: 0;
+    // Layout
     display: grid;
     grid-template-areas: 
       "rating rating rating heart heart heart"
@@ -25,8 +26,11 @@
       ". button button button button .";
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(4, min-content) 1fr min-content;
+    
+    // Position over image
     position: absolute;
     inset: 0;
+
     padding: 1rem;
     background-color: rgba($dark-blue, 0.75);
     font-size: 1rem;
