@@ -1,6 +1,5 @@
 
 import { FaStar as FullStar, FaStarHalfAlt as HalfStar, FaRegStar as EmptyStar } from "react-icons/fa";
-import { movieFilters } from "../global/globals";
 
 function StarRating( {rating} ) {
 
