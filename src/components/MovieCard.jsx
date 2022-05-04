@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { pathToPoster } from "../global/globals";
 import placeholderPoster from "../images/placeholder_poster.png";
+import StarRating from "./StarRating";
 import FavouriteHeart from "./FavouriteHeart";
 
 function MovieCard({movie}) {
@@ -21,10 +22,11 @@ function MovieCard({movie}) {
   
         // Take a fraction of the card's width and use it to set the nearest whole font size 
         // 0.054 is experimentally found to give a font size of 15px at 360px viewport width
-        const relativeFontSize = elementWidth*0.05;
+        const relativeFontSize = elementWidth*0.06;
         // const roundedFontSize = Math.round(relativeFontSize);
   
         setFontSize(relativeFontSize)
+        console.log(relativeFontSize);
       }
     }
 
@@ -62,7 +64,10 @@ function MovieCard({movie}) {
     <article id={movieCardID} className="movie-card">
       <img src={movie.poster_path ? `${pathToPoster}${movie.poster_path}` : placeholderPoster} alt={movie.title} className="movie-card-poster" />
       <div className="movie-card-overlay"  style={style}>
-        <p className="movie-rating">{movie.vote_average}</p>
+        <div className="movie-rating">
+          <StarRating rating={movie.vote_average}/>
+          <span className="score-rating .screen-reader-text">{movie.vote_average*10}%</span>
+        </div>
         <FavouriteHeart movieID={movie.id}/>
         <h3 className="movie-title">{movie.title}</h3>
         <p className="movie-release-date">{movie.release_date}</p>
