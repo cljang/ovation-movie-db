@@ -15,11 +15,20 @@
 
   &-overlay {
     opacity: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    align-content: flex-start;
+    // display: flex;
+    // flex-wrap: wrap;
+    // justify-content: space-between;
+    // align-items: center;
+    // align-content: flex-start;
+    display: grid;
+    grid-template-areas: 
+      "rating rating rating heart heart heart"
+      "title title title title title title"
+      "date date date date date date"
+      "overview overview overview overview overview overview"
+      ". button button button button .";
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, min-content) 1fr min-content;
     position: absolute;
     inset: 0;
     padding: 1rem;
@@ -27,7 +36,19 @@
     font-size: 1rem;
     transition: opacity 0.2s ease-in-out;
 
+    .movie-rating {
+      grid-area: rating;
+      align-self: center;
+    }
+
+    .favourite-heart {
+      grid-area: heart;
+      justify-self: flex-end;
+      align-self: center;
+    }
+
     .movie-title {
+      grid-area: title;
       margin-top: 1rem;
       width: 100%;
       text-overflow: ellipsis;
@@ -35,11 +56,17 @@
       overflow: hidden;
     }
 
+    .movie-release-date {
+      grid-area: date;
+    }
+
     .movie-overview {
+      grid-area: overview;
       overflow: hidden;
-      display: -webkit-box;
-      -webkit-line-clamp: 4;
-      -webkit-box-orient: vertical;  
+      // display: -webkit-box;
+      // -webkit-line-clamp: 4;
+      // -webkit-box-orient: vertical;  
+      flex-grow: 1;
 
       .hidden {
         display: none;
@@ -47,11 +74,14 @@
     }
 
     .movie-info-button {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      white-space: nowrap;
+      grid-area: button;
+      text-align: center;
+      // width: 10rem;
+      // position: absolute;
+      // bottom: 2rem;
+      // left: 50%;
+      // transform: translateX(-50%);
+      // white-space: nowrap;
       background-color: $blue;
       color: $white;
       text-decoration: none;
