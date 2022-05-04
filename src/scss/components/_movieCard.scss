@@ -15,11 +15,6 @@
 
   &-overlay {
     opacity: 0;
-    // display: flex;
-    // flex-wrap: wrap;
-    // justify-content: space-between;
-    // align-items: center;
-    // align-content: flex-start;
     display: grid;
     grid-template-areas: 
       "rating rating rating heart heart heart"
@@ -30,7 +25,6 @@
       ". button button button button .";
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(4, min-content) 1fr min-content;
-    align-content: center;
     position: absolute;
     inset: 0;
     padding: 1rem;
@@ -67,12 +61,7 @@
       overflow: hidden;
       display: -webkit-box;
       -webkit-line-clamp: 4;
-      -webkit-box-orient: vertical;  
-      
-
-      .hidden {
-        display: none;
-      }
+      -webkit-box-orient: vertical;
     }
 
     .movie-info-button {
