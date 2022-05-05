@@ -4,13 +4,16 @@
 
 @use "./global/base";
 
+// Components
 @use "./components/header";
-
-@use "./pages/home";
 @use "./components/movieFilter";
 @use "./components/movieContainer";
 @use "./components/movieCard";
 @use "./components/movieRating";
 @use "./components/favouriteHeart";
+
+// Pages
+@use "./pages/home";
+@use "./pages/movie";
 
 @use "./components/footer";

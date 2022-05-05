@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { endpointMovieSearch, pathToPoster } from "../global/globals"
-import { API_KEY } from "../global/api-key"
+import { endpointMovieSearch, pathToPoster } from "../global/globals";
+import { API_KEY } from "../global/api-key";
+import MovieRating from "../components/MovieRating";
+import FavouriteHeart from "../components/FavouriteHeart";
 
 function PageMovie() {
   const { id } = useParams();
@@ -25,12 +27,21 @@ function PageMovie() {
     fetchMovie();
   }, [id])
 
+  const formatRuntime = (runtimeMinutes) => {
+    const minutesInHour = 60;
+    const hours = Math.floor(runtimeMinutes / minutesInHour);
+    const minutes = runtimeMinutes % minutesInHour;
+    return `${hours}h ${minutes}m`
+  };
+
   return (
     <section>
       <img src={`${pathToPoster}${movie.poster_path}`} alt={movie.title} className="movie-card-poster" />
-      <p className="movie-rating">{movie.vote_average}</p>
+      <MovieRating rating={movie.vote_average}/>
+      <FavouriteHeart movieID={movie.id}/>
       <h2>{movie.title}</h2>
       <p className="movie-release-date">{movie.release_date}</p>
+      <p className="movie-runtime">{formatRuntime(movie.runtime)}</p>
       <p className="movie-overview">{movie.overview}</p>
     </section>
   )
