@@ -1,36 +1,51 @@
+import { Link } from "react-router-dom";
+import { FaFacebook, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa"
+
 function Footer() {
   return (
     <footer className="app-footer">
-      <section className="brand">
-        <div className="logo">
-          <h2>ovation.</h2>
-        </div>
-        <div className="social-icons">
-        
-        </div>
-      </section>
-      <section className="site-map">
-        <nav>
-          <ul>
-            <li>
-              Explore
-              <ul>
-                <li>Home</li>
-                <li>About</li>
-                <li>Favourite</li>
+      <div className="footer-content">
+        <section className="brand">
+          <div className="logo">
+            <h2>ovation.</h2>
+          </div>
+          <div className="social-icons">
+            <Link to={"#"}>
+              <FaFacebook />
+            </Link>
+            <Link to={"#"}>
+              <FaTwitter />
+            </Link>
+            <Link to={"#"}>
+              <FaInstagram />
+            </Link>
+            <Link to={"#"}>
+              <FaYoutube />
+            </Link>
+          </div>
+        </section>
+        <section className="site-map">
+          <nav>
+            <div>
+              <h3 className="link-category">Explore</h3>
+              <ul className="links">
+                <li><Link to={"/"}>Home</Link></li>
+                <li><Link to={"/about"}>About</Link></li>
+                <li><Link to={"/favourites"}>Favourite</Link></li>
               </ul>
-            </li>
-            <li>
-              Legal
-              <ul>
+            </div>
+            <div>
+              <h3 className="link-category">Legal</h3>
+              <ul className="links">
                 <li>Terms of Use</li>
                 <li>Privacy Policy</li>
                 <li>Accessibility</li>
               </ul>
-            </li>
-          </ul>
-        </nav>
-      </section>
+            </div>
+          </nav>
+        </section>
+        <p className="copyright">&copy; {new Date().getFullYear()} Clayton Jang</p>
+      </div>
     </footer>
   );
 }
