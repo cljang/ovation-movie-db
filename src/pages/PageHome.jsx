@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useSelector } from "react-redux"
-import { endpointMovieSearch } from "../global/globals"
+import { appTitle, endpointMovieSearch } from "../global/globals"
 import { API_KEY } from "../global/api-key"
 import MovieContainer from "../components/MovieContainer";
 import MovieFilter from "../components/MovieFilter"
@@ -11,6 +11,11 @@ const PageHome = () => {
   const selectedMovieFilter = useSelector((state) => state.movieFilter.value);
   // Movie List
   const [movieList, setMovieList] = useState(false);
+
+  // On mount, set document title
+  useEffect(() => {
+    document.title = `${appTitle}`
+  }, [])
 
   // Re-fetch movies if the selectedMovieFilter changes - this will also occur on page load
   useEffect(() => {

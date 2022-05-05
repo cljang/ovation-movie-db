@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
-import { localListName, getFavouritesList } from "../global/globals";
+import { appTitle, localListName, getFavouritesList } from "../global/globals";
 
 const PageFavourite = () => {
+  
+  // On mount, set document title
+  useEffect(() => {
+    document.title = `Favourites - ${appTitle}`
+  }, [])
 
   const [favouritesList, setFavouritesList] = useState();
   useEffect(() => {

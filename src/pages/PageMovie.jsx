@@ -2,13 +2,21 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { endpointMovieSearch, pathToPoster } from "../global/globals";
 import { API_KEY } from "../global/api-key";
+import { appTitle } from "../global/globals";
 import MovieRating from "../components/MovieRating";
 import FavouriteHeart from "../components/FavouriteHeart";
 
 function PageMovie() {
   const { id } = useParams();
 
-  const [movie, setMovie] = useState({});
+  const [movie, setMovie] = useState(false);
+
+  // On mount, set document title
+  useEffect(() => {
+    if (movie) {
+      document.title = `${movie.title} - ${appTitle}`
+    }
+  }, [movie])
 
   // On mount, scroll back to the top
   useEffect(() => {
