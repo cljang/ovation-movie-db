@@ -43,8 +43,8 @@ function PageMovie() {
   };
 
   return (
-    <section>
-    <img src={movie.poster_path ? `${pathToPoster}${movie.poster_path}` : placeholderPoster} alt={movie.title} className="movie-poster" />
+    <section className="page-movie">
+      <img src={movie.poster_path ? `${pathToPoster}${movie.poster_path}` : placeholderPoster} alt={movie.title} className="movie-poster" />
       <MovieRating rating={movie.vote_average}/>
       <FavouriteHeart movie={movie}/>
       <h2>{movie.title}</h2>

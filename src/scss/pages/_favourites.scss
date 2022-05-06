@@ -1,0 +1,15 @@
+@use "../global/variables" as *;
+
+.page-favourites {
+
+  .no-favourites {
+    max-width: 30rem;
+    margin: 0 auto;
+
+    img {
+      display: block;
+      margin: 0 auto;
+      max-width: 10rem;
+    }
+  }
+}

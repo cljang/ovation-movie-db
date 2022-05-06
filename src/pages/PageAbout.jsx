@@ -14,7 +14,7 @@ const PageAbout = () => {
   }, [])
 
   return (
-      <section>
+      <section className="page-about">
         <h2>About</h2>
       </section>
   );
