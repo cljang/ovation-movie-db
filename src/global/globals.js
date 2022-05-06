@@ -45,7 +45,7 @@ export const getFavouritesList = () => {
   const localListString = localStorage.getItem(localListName)
   let localListArr = [];
   if (localListString !== null && localListString !== "") {
-    localListArr = localListString.split(",");
+    localListArr = JSON.parse(localListString);
   }
 
   return localListArr;

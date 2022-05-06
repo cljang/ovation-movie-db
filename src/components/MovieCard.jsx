@@ -19,7 +19,7 @@ function MovieCard({movie}) {
       <img src={movie.poster_path ? `${pathToPoster}${movie.poster_path}` : placeholderPoster} alt={movie.title} className="movie-card-poster" />
       <div className="movie-card-overlay" onClick={flipCard}>
         <MovieRating rating={movie.vote_average}/>
-        <FavouriteHeart movieID={movie.id}/>
+        <FavouriteHeart movieID={movie.id} movie={movie}/>
         <h3 className="movie-title">{movie.title}</h3>
         <p className="movie-release-date">{movie.release_date}</p>
         <p className="movie-overview">{movie.overview ? movie.overview : ""}</p>
