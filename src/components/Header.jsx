@@ -14,26 +14,28 @@ function Header() {
   }
 
   return (
-    <header className="navbar">
-      <div className="navbar-logo">
-        <Link to="/">
-          <h1>ovation.</h1>
-        </Link>
+    <header>
+      <div className="navbar">
+        <div className="navbar-logo">
+          <Link to="/">
+            <h1>ovation.</h1>
+          </Link>
+        </div>
+        
+        <button
+          className={"navbar-btn" + (navOpen ? " navbar-toggled" : "")}
+          id="btn-menu"
+          aria-label="Navigation Menu"
+          aria-controls="header-menu"
+          aria-expanded={navOpen}
+          onClick={handleNavButton}
+        >
+          <span className="bar" id="bar-1"></span>
+          <span className="bar" id="bar-2"></span>
+          <span className="bar" id="bar-3"></span>
+        </button>
+        <NavMain />
       </div>
-      
-      <button
-        className={"navbar-btn" + (navOpen ? " navbar-toggled" : "")}
-        id="btn-menu"
-        aria-label="Navigation Menu"
-        aria-controls="header-menu"
-        aria-expanded={navOpen}
-        onClick={handleNavButton}
-      >
-        <span className="bar" id="bar-1"></span>
-        <span className="bar" id="bar-2"></span>
-        <span className="bar" id="bar-3"></span>
-      </button>
-      <NavMain />
     </header>
   );
 }
