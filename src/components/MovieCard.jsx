@@ -22,7 +22,7 @@ function MovieCard({movie}) {
         <FavouriteHeart movieID={movie.id}/>
         <h3 className="movie-title">{movie.title}</h3>
         <p className="movie-release-date">{movie.release_date}</p>
-        <p className="movie-overview">{movie.overview}</p>
+        <p className="movie-overview">{movie.overview ? movie.overview : ""}</p>
         <Link to={`/movie/${movie.id}`} className="movie-info-button">More Info</Link>
       </div>
     </article>

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { endpointMovieSearch, pathToPoster } from "../global/globals";
 import { API_KEY } from "../global/api-key";
 import { appTitle } from "../global/globals";
+import placeholderPoster from "../images/placeholder_poster.png";
 import MovieRating from "../components/MovieRating";
 import FavouriteHeart from "../components/FavouriteHeart";
 
@@ -44,13 +45,13 @@ function PageMovie() {
 
   return (
     <section>
-      <img src={`${pathToPoster}${movie.poster_path}`} alt={movie.title} className="movie-card-poster" />
+    <img src={movie.poster_path ? `${pathToPoster}${movie.poster_path}` : placeholderPoster} alt={movie.title} className="movie-poster" />
       <MovieRating rating={movie.vote_average}/>
       <FavouriteHeart movieID={movie.id}/>
       <h2>{movie.title}</h2>
       <p className="movie-release-date">{movie.release_date}</p>
-      <p className="movie-runtime">{formatRuntime(movie.runtime)}</p>
-      <p className="movie-overview">{movie.overview}</p>
+      <p className="movie-runtime">{movie.runtime ? formatRuntime(movie.runtime) : ""}</p>
+      <p className="movie-overview">{movie.overview ? movie.overview : ""}</p>
     </section>
   )
 }

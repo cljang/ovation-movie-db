@@ -3,7 +3,10 @@
 .navbar {
   min-height: 4.5rem;
   background-color: $grey-dark;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
