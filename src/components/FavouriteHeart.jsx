@@ -11,7 +11,8 @@ function FavouriteHeart( { movie } ) {
   const dispatch = useDispatch();
 
   // Switch heart state and update local storage for favouriteList
-  const toggleHeart = () => {
+  const toggleHeart = (e) => {
+    e.stopPropagation();
     // If the movieID is currently favourited, filter it out and set favourited to false
     // Else add it to the favourited list and set favourited to true
     if (favourited) {
