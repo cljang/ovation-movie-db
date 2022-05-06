@@ -8,9 +8,14 @@ const PageAbout = () => {
     document.title = `About - ${appTitle}`
   }, [])
 
+  // On mount, scroll back to the top
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
       <section>
-          <h2>About</h2>
+        <h2>About</h2>
       </section>
   );
 

@@ -16,6 +16,11 @@ const PageHome = () => {
   useEffect(() => {
     document.title = `${appTitle}`
   }, [])
+  
+  // On mount, scroll back to the top
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   // Re-fetch movies if the selectedMovieFilter changes - this will also occur on page load
   useEffect(() => {

@@ -7,6 +7,11 @@ const PageFavourite = () => {
   useEffect(() => {
     document.title = `Favourites - ${appTitle}`
   }, [])
+  
+  // On mount, scroll back to the top
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   const [favouritesList, setFavouritesList] = useState();
   useEffect(() => {
