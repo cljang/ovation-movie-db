@@ -1,6 +1,7 @@
 export const appTitle = "Ovation Movie Database";
 export const endpointMovieSearch = "https://api.themoviedb.org/3/movie/";
 export const pathToPoster = "https://image.tmdb.org/t/p/w500/";
+export const pathToBackdrop = "https://image.tmdb.org/t/p/original/";
 
 // Available movie filters
 export const movieFilters = [

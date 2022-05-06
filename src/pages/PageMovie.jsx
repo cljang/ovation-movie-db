@@ -46,7 +46,7 @@ function PageMovie() {
     <section>
     <img src={movie.poster_path ? `${pathToPoster}${movie.poster_path}` : placeholderPoster} alt={movie.title} className="movie-poster" />
       <MovieRating rating={movie.vote_average}/>
-      <FavouriteHeart movieID={movie.id} movie={movie}/>
+      <FavouriteHeart movie={movie}/>
       <h2>{movie.title}</h2>
       <p className="movie-release-date">{movie.release_date}</p>
       <p className="movie-runtime">{movie.runtime ? formatRuntime(movie.runtime) : ""}</p>

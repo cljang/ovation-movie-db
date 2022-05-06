@@ -14,16 +14,16 @@ export const favouritesListSlice = createSlice({
       state.value = [...state.value, action.payload];
       localStorage.setItem(localListName, JSON.stringify(state.value))
     },
-    // Take a move object and if filter it out of the favourites list
+    // Take a movie object and filter it out of the favourites list
     removeFavourite: (state, action) => {
-      state.value = state.value.filter((movie) => movie.id !== action.payload.id)
+      state.value = state.value.filter((favouritedMovie) => favouritedMovie.id !== action.payload.id)
       localStorage.setItem(localListName, JSON.stringify(state.value))
-    }
+    },
     
   }
 })
 
-export const { addFavourite, removeFavourite } = favouritesListSlice.actions;
+export const { addFavourite, removeFavourite, isFavourited } = favouritesListSlice.actions;
 
 const favouritesListReducer = favouritesListSlice.reducer;
 export default favouritesListReducer;

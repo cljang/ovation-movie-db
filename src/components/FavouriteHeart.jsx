@@ -1,12 +1,9 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
-import { localListName, getFavouritesList } from "../global/globals";
 import { addFavourite, removeFavourite } from "../features/favourites/favouritesListSlice";
 
-function FavouriteHeart( { movieID, movie } ) {
-
-
+function FavouriteHeart( { movie } ) {
   const [favourited, setFavourited] = useState(false)
 
   const favouritesList = useSelector((state) => state.favouritesList.value)

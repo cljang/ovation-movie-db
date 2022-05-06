@@ -1,7 +1,11 @@
-import { useState, useEffect } from "react";
-import { appTitle, localListName, getFavouritesList } from "../global/globals";
+import { useEffect } from "react";
+import { appTitle } from "../global/globals";
+import { useSelector } from "react-redux";
+import MovieContainer from "../components/MovieContainer";
 
 const PageFavourite = () => {
+
+  const favouritesList = useSelector((state) => state.favouritesList.value);
   
   // On mount, set document title
   useEffect(() => {
@@ -13,17 +17,10 @@ const PageFavourite = () => {
     window.scrollTo(0, 0)
   }, [])
 
-  const [favouritesList, setFavouritesList] = useState();
-  useEffect(() => {
-    setFavouritesList(getFavouritesList());
-  }, [])
-
   return (
       <section>
           <h2>Favourite</h2>
-          <ul>
-            {favouritesList && favouritesList.map((id) => <li key={id}>{id}</li>)}
-          </ul>
+          <MovieContainer movieList={favouritesList}/>
       </section>
   );
 
