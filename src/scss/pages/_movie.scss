@@ -1,2 +1,86 @@
 @use "../global/variables" as *;
 
+.page-movie {
+  position: relative;
+  padding-top: 0;
+
+  .movie-backdrop {
+    display: none;
+    
+    @media (min-width: $bp-tablet) {
+      display: block;
+      position: relative;
+      width: 100vw;
+      left: 50%;
+      margin-left: -50vw;
+      background-color: $dark-blue;
+      
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        max-width: unset;
+        display: block;
+        opacity: 25%;
+      }
+    }
+  }
+
+  .text-content {
+    // Layout
+    display: grid;
+    grid-template-areas: 
+      "rating rating rating heart heart heart"
+      "title title title title title title"
+      "date date date date date date"
+      "overview overview overview overview overview overview";
+    grid-template-columns: repeat(6, 1fr);
+    
+    // // Position over image
+    // position: absolute;
+    // inset: 0;
+
+    // padding: 1rem;
+    // background-color: rgba($dark-blue, 0.75);
+    // font-size: 1rem;
+    // transition: opacity 0.2s ease-in-out;
+
+    .movie-rating {
+      grid-area: rating;
+      align-self: center;
+    }
+
+    .favourite-heart {
+      grid-area: heart;
+      justify-self: flex-end;
+      align-self: center;
+    }
+
+    .movie-title {
+      grid-area: title;
+      margin-top: 1rem;
+      width: 100%;
+      // text-overflow: ellipsis;
+      // white-space: nowrap;
+      // overflow: hidden;
+    }
+
+    .movie-release-date {
+      grid-area: date;
+    }
+
+    .movie-overview {
+      grid-area: overview;
+      // overflow: hidden;
+      // display: -webkit-box;
+      // -webkit-line-clamp: 4;
+      // -webkit-box-orient: vertical;
+    }
+
+  }
+
+  .movie-title {
+    text-align: unset;
+    font-size: unset;
+  }
+}

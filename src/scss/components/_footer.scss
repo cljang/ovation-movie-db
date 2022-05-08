@@ -4,6 +4,10 @@ footer {
   background-color: $grey-dark;
   font-size: 1rem;
 
+  section {
+    padding: unset;
+  }
+
   .footer-content {
     max-width: 25rem;
     margin: 0 auto;

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { endpointMovieSearch, pathToPoster } from "../global/globals";
+import { endpointMovieSearch, pathToPoster, pathToBackdrop } from "../global/globals";
 import { API_KEY } from "../global/api-key";
 import { appTitle } from "../global/globals";
 import placeholderPoster from "../images/placeholder_poster.png";
@@ -44,13 +44,18 @@ function PageMovie() {
 
   return (
     <section className="page-movie">
-      <img src={movie.poster_path ? `${pathToPoster}${movie.poster_path}` : placeholderPoster} alt={movie.title} className="movie-poster" />
-      <MovieRating rating={movie.vote_average}/>
-      <FavouriteHeart movie={movie}/>
-      <h2>{movie.title}</h2>
-      <p className="movie-release-date">{movie.release_date}</p>
-      <p className="movie-runtime">{movie.runtime ? formatRuntime(movie.runtime) : ""}</p>
-      <p className="movie-overview">{movie.overview ? movie.overview : ""}</p>
+      {movie.backdrop_path && 
+        <div className="movie-backdrop"><img src={movie.backdrop_path && `${pathToBackdrop}${movie.backdrop_path}`} alt={`${movie.title} backdrop`} /></div>
+      }
+      <img src={movie.poster_path ? `${pathToPoster}${movie.poster_path}` : placeholderPoster} alt={`${movie.title} poster`} className="movie-poster" />
+      <div className="text-content">
+        <MovieRating rating={movie.vote_average}/>
+        <FavouriteHeart movie={movie}/>
+        <h2 className="movie-title">{movie.title}</h2>
+        <p className="movie-release-date">{movie.release_date}</p>
+        <p className="movie-runtime">{movie.runtime ? formatRuntime(movie.runtime) : ""}</p>
+        <p className="movie-overview">{movie.overview ? movie.overview : ""}</p>
+      </div>
     </section>
   )
 }
