@@ -21,7 +21,7 @@ const PageAbout = () => {
           <p><span className="app-title">ovation.</span> is an online movie database that enables users to track their favourite movies.</p>
           <p>Browse and view detailed information about popular, top rated, upcoming, and now playing titles.</p>
           <div className="attribution">
-            <p>This product uses the TMDb API but is not endorsed or certified by TMDb.</p>
+            <p>*This product uses the TMDb API but is not endorsed or certified by TMDb.</p>
             <a href="https://www.themoviedb.org/"><img src={tmdbLogo} alt="The Movie Database logo" /></a>
           </div>
         </div>

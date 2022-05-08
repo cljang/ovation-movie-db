@@ -6,10 +6,17 @@ body {
   color: $white;
 }
 
+.site-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 main {
   max-width: $max-width;
   margin: 0 auto;
   padding: 4.5rem 2rem;
+  flex-grow: 1;
 }
 
 a {
