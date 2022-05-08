@@ -47,14 +47,16 @@ function PageMovie() {
       {movie.backdrop_path && 
         <div className="movie-backdrop"><img src={movie.backdrop_path && `${pathToBackdrop}${movie.backdrop_path}`} alt={`${movie.title} backdrop`} /></div>
       }
-      <img src={movie.poster_path ? `${pathToPoster}${movie.poster_path}` : placeholderPoster} alt={`${movie.title} poster`} className="movie-poster" />
-      <div className="text-content">
-        <MovieRating rating={movie.vote_average}/>
-        <FavouriteHeart movie={movie}/>
-        <h2 className="movie-title">{movie.title}</h2>
-        <p className="movie-release-date">{movie.release_date}</p>
-        <p className="movie-runtime">{movie.runtime ? formatRuntime(movie.runtime) : ""}</p>
-        <p className="movie-overview">{movie.overview ? movie.overview : ""}</p>
+      <div className="movie-content">
+        <img src={movie.poster_path ? `${pathToPoster}${movie.poster_path}` : placeholderPoster} alt={`${movie.title} poster`} className="movie-poster" />
+        <div className="movie-text">
+          <MovieRating rating={movie.vote_average}/>
+          <FavouriteHeart movie={movie}/>
+          <h2 className="movie-title">{movie.title}</h2>
+          <p className="movie-release-date">{movie.release_date}</p>
+          <p className="movie-runtime">{movie.runtime ? formatRuntime(movie.runtime) : ""}</p>
+          <p className="movie-overview">{movie.overview ? movie.overview : ""}</p>
+        </div>
       </div>
     </section>
   )

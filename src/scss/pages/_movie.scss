@@ -2,17 +2,21 @@
 
 .page-movie {
   position: relative;
-  padding-top: 0;
+  padding-top: 2rem;
+  height: 100%;
 
   .movie-backdrop {
     display: none;
     
     @media (min-width: $bp-tablet) {
       display: block;
-      position: relative;
+      position: absolute;
+      height: 100%;
       width: 100vw;
       left: 50%;
+      margin-top: -2rem; // Matching padding-top
       margin-left: -50vw;
+      z-index: -1;
       background-color: $dark-blue;
       
       img {
@@ -25,62 +29,63 @@
       }
     }
   }
-
-  .text-content {
-    // Layout
-    display: grid;
-    grid-template-areas: 
-      "rating rating rating heart heart heart"
-      "title title title title title title"
-      "date date date date date date"
-      "overview overview overview overview overview overview";
-    grid-template-columns: repeat(6, 1fr);
-    
-    // // Position over image
-    // position: absolute;
-    // inset: 0;
-
-    // padding: 1rem;
-    // background-color: rgba($dark-blue, 0.75);
-    // font-size: 1rem;
-    // transition: opacity 0.2s ease-in-out;
-
-    .movie-rating {
-      grid-area: rating;
-      align-self: center;
+  
+  .movie-content {
+    .movie-poster {
+      border-radius: 1rem;
     }
 
-    .favourite-heart {
-      grid-area: heart;
-      justify-self: flex-end;
-      align-self: center;
+    .movie-text {
+      // Layout
+      display: grid;
+      grid-template-areas: 
+        "rating heart"
+        "title title"
+        "date time"
+        "overview overview";
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(4, min-content);
+  
+      .movie-rating {
+        grid-area: rating;
+        align-self: center;
+      }
+  
+      .favourite-heart {
+        grid-area: heart;
+        justify-self: flex-end;
+        align-self: center;
+      }
+  
+      .movie-title {
+        grid-area: title;
+        margin-top: 1rem;
+        width: 100%;
+        text-align: unset;
+        font-size: 1.5rem;
+      }
+  
+      .movie-release-date {
+        grid-area: date;
+      }
+  
+      .movie-runtime {
+        grid-area: time;
+        justify-self: flex-end;
+      }
+  
+      .movie-overview {
+        grid-area: overview;
+      }
     }
 
-    .movie-title {
-      grid-area: title;
-      margin-top: 1rem;
-      width: 100%;
-      // text-overflow: ellipsis;
-      // white-space: nowrap;
-      // overflow: hidden;
+    @media (min-width: $bp-tablet) {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 2rem;
+      padding: 2rem;
+      background-color: rgba($black, 0.60);
+      border-radius: 2rem;
     }
-
-    .movie-release-date {
-      grid-area: date;
-    }
-
-    .movie-overview {
-      grid-area: overview;
-      // overflow: hidden;
-      // display: -webkit-box;
-      // -webkit-line-clamp: 4;
-      // -webkit-box-orient: vertical;
-    }
-
-  }
-
-  .movie-title {
-    text-align: unset;
-    font-size: unset;
   }
 }
