@@ -11,8 +11,8 @@ function MovieCarousel({movieList}) {
   const settings = {
     slidesPerView: 'auto',
     loop: true,
-    modules:[ Navigation, Pagination, Autoplay ],
-    navigation: true,
+    modules:[ Pagination, Autoplay ],
+    // navigation: true,
     pagination:{
       clickable: true,
     },

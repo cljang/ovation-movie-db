@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { endpointMovieSearch, pathToPoster, pathToBackdrop } from "../global/globals";
 import { API_KEY } from "../global/api-key";
 import { appTitle } from "../global/globals";
@@ -11,6 +11,8 @@ function PageMovie() {
   const { id } = useParams();
 
   const [movie, setMovie] = useState(false);
+
+  const navigate = useNavigate();
 
   // On mount, set document title
   useEffect(() => {
@@ -28,6 +30,12 @@ function PageMovie() {
   useEffect(() => {
     const fetchMovie = async () => {
       const res = await fetch(`${endpointMovieSearch}${id}?api_key=${API_KEY}`)
+
+      // If Invalid Id, redirect to 404
+      if (res.status !== 200) {
+        navigate("/404")
+      }
+
       const data = await res.json();
       setMovie(data);
     }
