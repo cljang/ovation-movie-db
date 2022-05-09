@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { useSelector } from "react-redux"
 import { appTitle, endpointMovieSearch } from "../global/globals"
 import { API_KEY } from "../global/api-key"
+import MovieCarousel from "../components/MovieCarousel"
 import MovieContainer from "../components/MovieContainer";
 import MovieFilter from "../components/MovieFilter"
 
@@ -37,9 +38,10 @@ const PageHome = () => {
 
   return (
       <section className="page-home">
-          <h2>Home</h2>
+          <h2 className="screen-reader-text">Home</h2>
+          {movieList && <MovieCarousel movieList={movieList.slice(0,3)}/>}
           <MovieFilter />
-          <MovieContainer movieList={movieList} />
+          {movieList && <MovieContainer movieList={movieList} />}
       </section>
   );
 
