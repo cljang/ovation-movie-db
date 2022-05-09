@@ -39,7 +39,7 @@ function PageMovie() {
     const minutesInHour = 60;
     const hours = Math.floor(runtimeMinutes / minutesInHour);
     const minutes = runtimeMinutes % minutesInHour;
-    return `${hours}h ${minutes>10 ? minutes: "0" + minutes}m`
+    return `${hours}h ${minutes>10 ? minutes : "0" + minutes}m`
   };
 
   return (

@@ -31,6 +31,10 @@
   }
   
   .movie-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+
     .movie-poster {
       border-radius: 1rem;
     }
@@ -61,7 +65,7 @@
         grid-area: title;
         margin-top: 1rem;
         width: 100%;
-        text-align: unset;
+        text-align: left;
         font-size: 1.5rem;
       }
   
