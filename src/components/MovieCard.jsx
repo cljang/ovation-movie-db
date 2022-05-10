@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { pathToPoster } from "../global/globals";
 import placeholderPoster from "../images/placeholder_poster.png";
 import MovieRating from "./MovieRating";
 import FavouriteHeart from "./FavouriteHeart";
+import MovieInfoButton from "./MovieInfoButton";
 
 function MovieCard({movie}) {
 
@@ -23,7 +23,8 @@ function MovieCard({movie}) {
         <h3 className="movie-title">{movie.title}</h3>
         <p className="movie-release-date">{movie.release_date}</p>
         <p className="movie-overview">{movie.overview ? movie.overview : ""}</p>
-        <Link to={`/movie/${movie.id}`} className="movie-info-button">More Info</Link>
+        {/* <Link to={`/movie/${movie.id}`} className="movie-info-button">More Info</Link> */}
+        <MovieInfoButton movie={movie}/>
       </div>
     </article>
   );
