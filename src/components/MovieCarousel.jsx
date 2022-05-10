@@ -1,10 +1,10 @@
 
 import 'swiper/css/bundle';
 import "../scss/components/_movieCarousel.scss"
-import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination, Autoplay } from "swiper";
 import { pathToBackdrop } from "../global/globals";
+import MovieInfoButton from './MovieInfoButton';
 
 function MovieCarousel({movieList}) {
 
@@ -23,7 +23,7 @@ function MovieCarousel({movieList}) {
   }
 
   return (
-    movieList && movieList.length &&
+    movieList && movieList.length > 0 &&
       <Swiper {...settings} className="movie-carousel">
         {movieList.map((movie => {
           return (
@@ -34,7 +34,7 @@ function MovieCarousel({movieList}) {
               <div className='carousel-text'>
                 <h3 className='movie-title'>{movie.title}</h3>
                 <p className='movie-overview'>{movie.overview}</p>
-                <Link to={`/movie/${movie.id}`} className="movie-info-button">More Info</Link>
+                <MovieInfoButton movie={movie}/>
               </div>
             </SwiperSlide>
           )

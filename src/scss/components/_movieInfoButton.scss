@@ -1,0 +1,15 @@
+@use "../global/variables" as *;
+
+.movie-info-button {
+  display: inline-block;
+  text-align: center;
+  background-color: $blue;
+  color: $white;
+  text-decoration: none;
+  padding: 0.5rem 2rem;
+  border-radius: 2rem;
+
+  &:hover {
+    background-color: $purple;
+  }
+}
