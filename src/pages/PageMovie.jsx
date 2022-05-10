@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { endpointMovieSearch, pathToPoster, pathToBackdrop } from "../global/globals";
+import { endpointMovieSearch, pathToOriginalImage } from "../global/globals";
 import { API_KEY } from "../global/api-key";
 import { appTitle } from "../global/globals";
 import placeholderPoster from "../images/placeholder_poster.png";
@@ -41,7 +41,7 @@ function PageMovie() {
     }
 
     fetchMovie();
-  }, [id])
+  }, [id, navigate])
 
   const formatRuntime = (runtimeMinutes) => {
     const minutesInHour = 60;
@@ -53,10 +53,10 @@ function PageMovie() {
   return (
     <section className="page-movie">
       {movie.backdrop_path && 
-        <div className="movie-backdrop"><img src={movie.backdrop_path && `${pathToBackdrop}${movie.backdrop_path}`} alt={`${movie.title} backdrop`} /></div>
+        <div className="movie-backdrop"><img src={movie.backdrop_path && `${pathToOriginalImage}${movie.backdrop_path}`} alt={`${movie.title} backdrop`} /></div>
       }
       <div className="movie-content">
-        <img src={movie.poster_path ? `${pathToPoster}${movie.poster_path}` : placeholderPoster} alt={`${movie.title} poster`} className="movie-poster" />
+        <img src={movie.poster_path ? `${pathToOriginalImage}${movie.poster_path}` : placeholderPoster} alt={`${movie.title} poster`} className="movie-poster" />
         <div className="movie-text">
           <MovieRating rating={movie.vote_average}/>
           <FavouriteHeart movie={movie}/>

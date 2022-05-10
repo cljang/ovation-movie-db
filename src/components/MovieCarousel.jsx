@@ -3,7 +3,7 @@ import 'swiper/css/bundle';
 import "../scss/components/_movieCarousel.scss"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination, Autoplay } from "swiper";
-import { pathToBackdrop } from "../global/globals";
+import { pathToOriginalImage } from "../global/globals";
 import MovieInfoButton from './MovieInfoButton';
 
 function MovieCarousel({movieList}) {
@@ -29,7 +29,7 @@ function MovieCarousel({movieList}) {
           return (
             <SwiperSlide key={movie.id} className="carousel-slide">
               <div className='movie-backdrop'>
-                {movie.backdrop_path && <img src={`${pathToBackdrop}${movie.backdrop_path}`} alt={`${movie.title} backdrop`} />}
+                {movie.backdrop_path && <img src={`${pathToOriginalImage}${movie.backdrop_path}`} alt={`${movie.title} backdrop`} />}
               </div>
               <div className='carousel-text'>
                 <h3 className='movie-title'>{movie.title}</h3>
