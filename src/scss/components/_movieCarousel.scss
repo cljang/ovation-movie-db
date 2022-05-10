@@ -48,6 +48,10 @@
 
       .movie-title {
         font-size: 2rem;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
       }
 
       .movie-overview {
@@ -89,6 +93,7 @@
 
         .movie-title {
           font-size: 2rem;
+          -webkit-line-clamp: 2;
         }
 
         .movie-overview {
@@ -97,7 +102,6 @@
           -webkit-line-clamp: 3;
           -webkit-box-orient: vertical;
           margin-bottom: 2rem;
-          font-size: 1.5rem;
         }
       }
     }
@@ -106,9 +110,11 @@
       .carousel-text {
         .movie-title {
           font-size: 3rem;
+          -webkit-line-clamp: 3;
         }
 
         .movie-overview {
+          font-size: 1.5rem;
           -webkit-line-clamp: 4;
         }
       }
@@ -116,6 +122,7 @@
   }
 
   .swiper-pagination {
+    bottom: 1rem;
 
     &-bullet {
       border-radius: 0;
