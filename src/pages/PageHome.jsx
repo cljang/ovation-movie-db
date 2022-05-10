@@ -40,8 +40,10 @@ const PageHome = () => {
       <section className="page-home">
           <h2 className="screen-reader-text">Home</h2>
           {movieList && <MovieCarousel movieList={movieList.slice(0,3)}/>}
-          <MovieFilter />
-          {movieList && <MovieContainer movieList={movieList} />}
+          <div className="main-content">
+            <MovieFilter />
+            {movieList && <MovieContainer movieList={movieList} />}
+          </div>
       </section>
   );
 

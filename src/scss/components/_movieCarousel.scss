@@ -3,34 +3,19 @@
 .movie-carousel {
   display: block;
   position: relative;
-  height: 100%;
-  width: 100%;
-  // width: 100vw;
-  // left: 50%;
-  // margin-top: -2rem; // Matching padding-top
-  // margin-left: -50vw;
-  // z-index: -1;
   background-color: $dark-blue;
   
   .carousel-slide {
-    display: grid;
-    grid-template-areas: 
-      ". . ."
-      ". text ."
-      ". . .";
-    grid-template-columns: 1fr minmax(0,$max-width) 1fr;
-    grid-template-rows: 1fr min-content 4rem;
-    align-items: flex-end;
-    gap: 2rem;
     background-color: $dark-blue;
     width: 100%;
     height: 37.5rem;
+    // Keep the slide square-ish until it is full screen height
+    height: min(100vh, 100vw);
     
     .movie-backdrop {
       display: block;
       width: 100%;
       height: 100%;
-      position: absolute;
       z-index: -1;
       background-color: $dark-blue;
 
@@ -46,21 +31,22 @@
     
 
     .carousel-text {
-      grid-area: text;
+      position: absolute;
+      inset: 0;
       font-size: 1.5rem;
-      // padding: 2rem;
-      // background-color: rgba($black, 0.75);
-      // border-radius: 2rem;
+      padding: 4rem;
 
       .movie-title {
-        font-size: 3rem;
+        // font-size: 3rem;
+        font-size: 2rem;
       }
 
       .movie-overview {
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 4;
-        -webkit-box-orient: vertical;
+        display: none;
+        // overflow: hidden;
+        // display: -webkit-box;
+        // -webkit-line-clamp: 4;
+        // -webkit-box-orient: vertical;
       }
 
       .movie-info-button {

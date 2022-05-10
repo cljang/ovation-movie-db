@@ -13,8 +13,6 @@ body {
 }
 
 main {
-  max-width: $max-width;
-  margin: 0 auto;
 
   h2 {
     text-align: center;
@@ -27,6 +25,8 @@ footer {
 }
 
 section {
+  max-width: $max-width;
+  margin: 0 auto;
   padding: 2rem 2rem 4rem;
   margin-top: 4.5rem;
 

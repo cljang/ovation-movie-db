@@ -3,7 +3,7 @@ import 'swiper/css/bundle';
 import "../scss/components/_movieCarousel.scss"
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from "swiper/react"
-import { Navigation, Pagination, Autoplay } from "swiper";
+import { Pagination, Autoplay } from "swiper";
 import { pathToBackdrop } from "../global/globals";
 
 function MovieCarousel({movieList}) {
@@ -13,7 +13,6 @@ function MovieCarousel({movieList}) {
     slidesPerView: 'auto',
     loop: true,
     modules:[ Pagination, Autoplay ],
-    // navigation: true,
     pagination:{
       clickable: true,
     },

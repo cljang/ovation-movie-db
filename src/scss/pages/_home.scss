@@ -1,7 +1,12 @@
 @use "../global/variables" as *;
 
 .page-home {
-  // padding: 2rem;
-  // margin-top: 0;
-  padding-top: 0;
+  padding: 0;
+  max-width: unset;
+
+  .main-content {
+    padding: 2rem 2rem 4rem;
+    max-width: $max-width;
+    margin: 0 auto;
+  }
 }
