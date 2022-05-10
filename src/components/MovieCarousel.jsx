@@ -9,6 +9,7 @@ import { pathToBackdrop } from "../global/globals";
 function MovieCarousel({movieList}) {
 
   const settings = {
+    // spaceBetween: 10,
     slidesPerView: 'auto',
     loop: true,
     modules:[ Pagination, Autoplay ],
