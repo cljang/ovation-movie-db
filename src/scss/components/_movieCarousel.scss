@@ -14,10 +14,10 @@
     
     display: grid;
     grid-template-areas: 
-      ". . ."
-      ". text ."
-      ". . .";
-    grid-template-columns: 2rem 1fr 2rem;
+      ". . . . ."
+      ". . text . ."
+      ". . . . .";
+    grid-template-columns: 2rem 1fr minmax(0,$max-width) 1fr 2rem;
     grid-template-rows: 2rem 1fr 2rem;
     align-items: center;
     justify-content: center;
@@ -83,9 +83,12 @@
       
     }
 
+    // Switch to wide layout
     @media (min-width: $bp-laptop) {
       // Compensate for the header height (5.5rem)
       height: min(100vh - 5.5rem, 100vw);
+      min-height: 25rem;  // Handle long phone landscape edge case
+      grid-template-rows: minmax(2rem, 1fr) min-content minmax(2rem, 5rem);
 
       .carousel-text {
         text-align: left;
