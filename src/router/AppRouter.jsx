@@ -8,7 +8,7 @@ import PageMovie from "../pages/PageMovie";
 
 function AppRouter() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/ovation">
       <Link to="#site-main" className="screen-reader-text">Skip to content</Link>
       <div className="site-wrapper">
         <Header />
