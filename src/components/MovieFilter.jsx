@@ -1,15 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux"
 import { FaChevronDown as DownArrow, FaChevronUp as UpArrow } from "react-icons/fa"
 import { setMovieFilter } from "../features/movieFilter/movieFilterSlice"
-import { movieFilters } from "../global/globals";
 
 function MovieFilter() {
   
   // Movie Filter
-  const selectedMovieFilter = useSelector((state) => state.movieFilter.value);
-  // Text Value for Filter
-  const [filterText, setFilterText] = useState("Popular")
+  const movieFilter = useSelector((state) => state.movieFilter);
   // Button Open
   const [ buttonOpen, setButtonOpen ] = useState(false);
 
@@ -20,31 +17,25 @@ function MovieFilter() {
     setButtonOpen(!buttonOpen);
   }
 
+  // Handle Button Close on Blur
+  const closeButton = () => {
+    setButtonOpen(false);
+  }
+
   // Function to change the movie filter state
   const handleFilterChange = (e) => {
     dispatch(setMovieFilter(e.target.value));
-    setButtonOpen(false);
+    closeButton();
   }
 
-  // Handle Button Close on Blur
-  const handleButtonBlur = (e) => {
-    setButtonOpen(false);
-  }
-
-  useEffect(() => {
-    const [matchingFilter] = movieFilters.filter((filter) => filter.value === selectedMovieFilter);
-    setFilterText(matchingFilter.text);
-  }, [selectedMovieFilter, setFilterText])
-  
-  
   return (
     <form className="movie-filter-selector">
-      <button onClick={handleButtonClick} onBlur={handleButtonBlur}>
-        <p>{filterText}</p>
+      <button onClick={handleButtonClick} onBlur={closeButton}>
+        <p>{movieFilter.text}</p>
         {buttonOpen ? <UpArrow className="dropdown-arrow" /> : <DownArrow className="dropdown-arrow" />}
       </button>
       <fieldset className={"selectors" + (buttonOpen ? "" : " filter-hidden")}>
-        {movieFilters.map((filter) => {
+        {movieFilter.valid_values.map((filter) => {
           return (
             <div key={filter.value}>
               <input type="radio" name="filter" id={filter.value} value={filter.value} onChange={handleFilterChange}/>

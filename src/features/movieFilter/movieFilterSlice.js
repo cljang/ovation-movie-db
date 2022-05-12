@@ -2,12 +2,25 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   valid_values: [
-    "popular",
-    "top_rated",
-    "upcoming",
-    "now_playing"
+    {
+      text: "Popular",
+      value: "popular"
+    },
+    {
+      text: "Top Rated",
+      value: "top_rated"
+    },
+    {
+      text: "Upcoming",
+      value: "upcoming"
+    },
+    {
+      text: "Now Playing",
+      value: "now_playing"
+    },
   ],
   value: "popular",
+  text: "Popular"
 }
 
 export const movieFilterSlice = createSlice({
@@ -15,8 +28,10 @@ export const movieFilterSlice = createSlice({
   initialState,
   reducers: {
     setMovieFilter: (state, action) => {
-      if (state.valid_values.includes(action.payload)) {
-        state.value = action.payload;
+      let [ match ] = state.valid_values.filter( (filter) => filter.value === action.payload);
+      if ( match ) {
+        state.value = match.value;
+        state.text = match.text;
       }
     },
     
