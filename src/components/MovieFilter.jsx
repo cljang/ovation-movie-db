@@ -26,6 +26,11 @@ function MovieFilter() {
     setButtonOpen(false);
   }
 
+  // Handle Button Close on Blur
+  const handleButtonBlur = (e) => {
+    setButtonOpen(false);
+  }
+
   useEffect(() => {
     const [matchingFilter] = movieFilters.filter((filter) => filter.value === selectedMovieFilter);
     setFilterText(matchingFilter.text);
@@ -34,7 +39,7 @@ function MovieFilter() {
   
   return (
     <form className="movie-filter-selector">
-      <button onClick={handleButtonClick}>
+      <button onClick={handleButtonClick} onBlur={handleButtonBlur}>
         <p>{filterText}</p>
         {buttonOpen ? <UpArrow className="dropdown-arrow" /> : <DownArrow className="dropdown-arrow" />}
       </button>
