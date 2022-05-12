@@ -1,60 +1,132 @@
 @use "../global/variables" as *;
 
 .movie-filter-selector {
-
-  .filter-background {
-    display: none;
-  }
-
-  .movie-filter {
-
-    &.active {
-      background-color: $blue;
-    }
-  }
-
-  @media (min-width: $bp-tablet) {
-    display: grid;
-    grid-template-areas: "popular top_rated upcoming now_playing";
-    grid-template-columns: repeat(4, 1fr);
-    margin: 0 auto 2rem;
-    max-width: 40rem;
-    padding: 0.25rem;
-    background-color: $grey-blue;
-    border-radius: 2rem;
-    overflow: hidden;
+  position: relative;
+  margin: 0 auto 2rem;
+  max-width: 30rem;
+  border-radius: 1rem;
+  z-index: 1;
   
-    .filter-background {
-      display: block;
-      // position: absolute;
-      background-color: $blue;
-      border-radius: 2rem;
-      transition: left 0.3s ease-in-out;
+  // Temp
+  button {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 3rem;
+    text-align: center;
+    padding: 0.5rem;
+    background-color: $blue;
+    color: $white;
+    border: none;
+    border-radius: 1.5rem;
+    z-index: 1;
+    
+    p {
+      margin: 0;
     }
 
-    .movie-filter {
-      position: relative;
-      padding: 0.5rem;
-      background-color: transparent;
-      color: $white;
-      border: none;
-      border-radius: 2rem;
+    .dropdown-arrow {
+      position: absolute;
+      top: 0;
+      right: 1.5rem;
+      height: 100%;
     }
 
-    .popular {
-      grid-area: popular;
-    }
-
-    .top_rated {
-      grid-area: top_rated;
-    }
-
-    .upcoming {
-      grid-area: upcoming;
-    }
-
-    .now_playing {
-      grid-area: now_playing;
+    &:hover {
+      background-color: $purple;
     }
   }
+
+  .selectors {
+    position: absolute;
+    top: 0;
+    border: none;
+    padding: 2rem 0 0.5rem;
+    margin: 0;
+    margin-top: 1.5rem;
+    border-radius: 0 0 1.5rem 1.5rem;
+    overflow: hidden;
+    width: 100%;
+    background-color: $grey-blue;
+    transform-origin: top;
+    transition: transform 0.3s ease-in-out;
+
+    label {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 0.5rem;
+  
+      &:hover {
+        background-color: $blue;
+      }
+    }
+  
+    input[type="radio"] {
+      display: none;
+    }
+
+    &.filter-hidden {
+      transform: scaleY(0);
+    }
+  }
+
+
+  
+
+  // .filter-background {
+  //   display: none;
+  // }
+
+  // .movie-filter {
+
+  //   &.active {
+  //     background-color: $blue;
+  //   }
+  // }
+
+  // @media (min-width: $bp-tablet) {
+  //   display: grid;
+  //   grid-template-areas: "popular top_rated upcoming now_playing";
+  //   grid-template-columns: repeat(4, 1fr);
+  //   margin: 0 auto 2rem;
+  //   max-width: 40rem;
+  //   padding: 0.25rem;
+  //   background-color: $grey-blue;
+  //   border-radius: 2rem;
+  //   overflow: hidden;
+  
+  //   .filter-background {
+  //     display: block;
+  //     // position: absolute;
+  //     background-color: $blue;
+  //     border-radius: 2rem;
+  //     transition: left 0.3s ease-in-out;
+  //   }
+
+  //   .movie-filter {
+  //     position: relative;
+  //     padding: 0.5rem;
+  //     background-color: transparent;
+  //     color: $white;
+  //     border: none;
+  //     border-radius: 2rem;
+  //   }
+
+  //   .popular {
+  //     grid-area: popular;
+  //   }
+
+  //   .top_rated {
+  //     grid-area: top_rated;
+  //   }
+
+  //   .upcoming {
+  //     grid-area: upcoming;
+  //   }
+
+  //   .now_playing {
+  //     grid-area: now_playing;
+  //   }
+  // }
 }

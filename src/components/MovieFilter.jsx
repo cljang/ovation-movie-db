@@ -1,4 +1,6 @@
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux"
+import { FaChevronDown as DownArrow, FaChevronUp as UpArrow } from "react-icons/fa"
 import { setMovieFilter } from "../features/movieFilter/movieFilterSlice"
 import { movieFilters } from "../global/globals";
 
@@ -6,39 +8,47 @@ function MovieFilter() {
   
   // Movie Filter
   const selectedMovieFilter = useSelector((state) => state.movieFilter.value);
+  // Text Value for Filter
+  const [filterText, setFilterText] = useState("Popular")
+  // Button Open
+  const [ buttonOpen, setButtonOpen ] = useState(false);
 
   const dispatch = useDispatch()
-  // const setBackground = (element) => {
-  //   const background = document.querySelector(".movie-filter-selector .filter-background");
-  //   if (background) {
-  //     background.classList.remove("popular");
-  //     background.style.position = "absolute";
-  //     background.style.top = element.offsetTop + "px";
-  //     background.style.left = element.offsetLeft + "px";
-  //     background.style.width = element.offsetWidth + "px";
-  //     background.style.height = element.offsetHeight + "px";
-  //   }
-  // };
+
+  const handleButtonClick = (e) => {
+    e.preventDefault();
+    setButtonOpen(!buttonOpen);
+  }
 
   // Function to change the movie filter state
   const handleFilterChange = (e) => {
-    dispatch(setMovieFilter(e.target.value))    
-    // setBackground(e.target);
+    dispatch(setMovieFilter(e.target.value));
+    setButtonOpen(false);
   }
+
+  useEffect(() => {
+    const [matchingFilter] = movieFilters.filter((filter) => filter.value === selectedMovieFilter);
+    setFilterText(matchingFilter.text);
+  }, [selectedMovieFilter, setFilterText])
   
   
   return (
-    <div className="movie-filter-selector">
-      {/* <div className="filter-background popular"></div> */}
-      {movieFilters.map((filter) => {
-        return <button key={filter.value} 
-                      value={filter.value}
-                      onClick={handleFilterChange}
-                      className={`movie-filter ${filter.value}` + (filter.value===selectedMovieFilter ? " active" : "")}>
-                {filter.text}
-              </button>
-      })}
-    </div>
+    <form className="movie-filter-selector">
+      <button onClick={handleButtonClick}>
+        <p>{filterText}</p>
+        {buttonOpen ? <UpArrow className="dropdown-arrow" /> : <DownArrow className="dropdown-arrow" />}
+      </button>
+      <fieldset className={"selectors" + (buttonOpen ? "" : " filter-hidden")}>
+        {movieFilters.map((filter) => {
+          return (
+            <div key={filter.value}>
+              <input type="radio" name="filter" id={filter.value} value={filter.value} onChange={handleFilterChange}/>
+              <label htmlFor={filter.value}>{filter.text}</label>
+            </div>
+          )
+        })}
+      </fieldset>
+    </form>
   )
 }
 
