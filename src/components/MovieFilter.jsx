@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux"
-import { FaChevronDown as DownArrow, FaChevronUp as UpArrow } from "react-icons/fa"
+import { FaChevronDown as DropdownArrow } from "react-icons/fa"
 import { setMovieFilter } from "../features/movieFilter/movieFilterSlice"
 
 function MovieFilter() {
@@ -32,9 +32,9 @@ function MovieFilter() {
     <form className="movie-filter-selector">
       <button onClick={handleButtonClick} onBlur={closeButton}>
         <p>{movieFilter.text}</p>
-        {buttonOpen ? <UpArrow className="dropdown-arrow" /> : <DownArrow className="dropdown-arrow" />}
+        <DropdownArrow className={"dropdown-arrow" + (buttonOpen ? " filter-open" : "")} />
       </button>
-      <fieldset className={"selectors" + (buttonOpen ? "" : " filter-hidden")}>
+      <fieldset className={"selectors" + (buttonOpen ? " filter-open" : "")}>
         {movieFilter.valid_values.map((filter) => {
           return (
             <div key={filter.value}>
