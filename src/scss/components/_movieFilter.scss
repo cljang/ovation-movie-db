@@ -8,7 +8,7 @@
   z-index: 1;
   
   // Temp
-  button {
+  .selector-btn {
     position: relative;
     display: block;
     width: 100%;
@@ -42,7 +42,7 @@
     }
   }
 
-  .selectors {
+  .filters {
     position: absolute;
     top: 0;
     border: none;
@@ -57,11 +57,15 @@
     transform-origin: top;
     transition: transform 0.3s ease-in-out;
 
-    label {
+    .filter-btn {
       display: block;
       width: 100%;
       text-align: center;
       padding: 0.5rem;
+      background-color: transparent;
+      color: $white;
+      border: none;
+      border-radius: 0;
   
       &:hover {
         background-color: $blue;
