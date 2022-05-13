@@ -37,7 +37,8 @@
       }
     }
 
-    &:hover {
+    &:hover,
+    &:focus {
       background-color: $purple;
     }
   }
@@ -67,7 +68,8 @@
       border: none;
       border-radius: 0;
   
-      &:hover {
+      &:hover,
+      &:focus {
         background-color: $blue;
       }
     }

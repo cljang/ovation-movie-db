@@ -9,7 +9,8 @@
   padding: 0.5rem 2rem;
   border-radius: 2rem;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: $purple;
   }
 }

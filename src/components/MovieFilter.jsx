@@ -24,7 +24,7 @@ function MovieFilter() {
   }
 
   // Function to change the movie filter state to match the clicked filter button
-  const handleFilterButtonClick = (e) => {
+  const handleFilterChange = (e) => {
     e.preventDefault();
     dispatch(setMovieFilter(e.target.value));
     closeButton();
@@ -56,14 +56,23 @@ function MovieFilter() {
 
   return (
     <form className="movie-filter-selector" ref={wrapperRef}>
-      <button onClick={handleSelectorButtonClick} className="selector-btn">
+      <button onClick={handleSelectorButtonClick} 
+              className="selector-btn"
+      >
         <p>{movieFilter.text}</p>
         <DropdownArrow className={"dropdown-arrow" + (selectorButtonOpen ? " filter-open" : "")} />
       </button>
       <fieldset className={"filters" + (selectorButtonOpen ? " filter-open" : "")}>
         {movieFilter.valid_values.map((filter) => {
           return (
-            <button key={filter.value} value={filter.value} onClick={handleFilterButtonClick} className="filter-btn">{filter.text}</button>
+            <button key={filter.value} 
+                    value={filter.value} 
+                    onClick={handleFilterChange} 
+                    className="filter-btn" 
+                    tabIndex={selectorButtonOpen ? 0 : -1}
+            >
+              {filter.text}
+            </button>
           )
         })}
       </fieldset>
