@@ -9,8 +9,8 @@
     ". . ."
     ". content ."
     ". . .";
-  grid-template-columns: 2rem 1fr 2rem;
-  grid-template-rows: 2rem 1fr 2rem;
+  grid-template-columns: minmax(2rem, 1fr) minmax(0, $max-width) minmax(2rem, 1fr);
+  grid-template-rows: 2rem min-content 2rem;
 
   .movie-backdrop {
     display: none;
@@ -22,13 +22,12 @@
       height: 100%;
       width: 100%;
       background-color: $dark-blue;
-      
-      img {
+
+      .backdrop-image {
         height: 100%;
         width: 100%;
-        object-fit: cover;
-        max-width: unset;
-        display: block;
+        background-size: cover;
+        background-attachment: fixed;
         opacity: 25%;
       }
     }
@@ -91,7 +90,7 @@
 
     @media (min-width: $bp-tablet) {
       display: grid;
-      grid-template-columns: 1fr 2fr;
+      grid-template-columns: 1fr 3fr;
       gap: 2rem;
       padding: 2rem;
       background-color: rgba($black, 0.75);

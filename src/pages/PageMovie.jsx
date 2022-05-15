@@ -50,10 +50,17 @@ function PageMovie() {
     return `${hours}h ${minutes>10 ? minutes : "0" + minutes}m`
   };
 
+  // Dynamically set backdrop image
+  const style = {
+    backgroundImage: `url(${pathToOriginalImage}${movie.backdrop_path})`,
+  }
+
   return (
     <section className="page-movie">
       {movie.backdrop_path && 
-        <div className="movie-backdrop"><img src={movie.backdrop_path && `${pathToOriginalImage}${movie.backdrop_path}`} alt={`${movie.title} backdrop`} /></div>
+        <div className="movie-backdrop">
+          <div className="backdrop-image" style={style}></div>
+        </div>
       }
       <div className="movie-content">
         <img src={movie.poster_path ? `${pathToOriginalImage}${movie.poster_path}` : placeholderPoster} alt={`${movie.title} poster`} className="movie-poster" />
