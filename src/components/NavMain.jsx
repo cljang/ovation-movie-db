@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { navMainLinks } from "../global/globals";
 import { closeNav } from "../features/navOpen/navOpenSlice"
+import SearchBar from "./SearchBar";
 
 function NavMain() {
 
@@ -14,20 +15,23 @@ function NavMain() {
   }
 
   return (
-    <nav className={"navbar-nav" + (navOpen ? " navbar-toggled" : "")}>
-      <ul>
-        {navMainLinks.map(link => {
-          return(
-            <li key={link.name}>
-              <NavLink to={link.path}
-                       onClick={hideNav}>
-                {link.name}
-              </NavLink>
-            </li>
-          )
-          })}
-      </ul>
-    </nav>
+    <div className={"navbar-menu" + (navOpen ? " navbar-toggled" : "")}>
+      <SearchBar />
+      <nav>
+        <ul>
+          {navMainLinks.map(link => {
+            return(
+              <li key={link.name}>
+                <NavLink to={link.path}
+                         onClick={hideNav}>
+                  {link.name}
+                </NavLink>
+              </li>
+            )
+            })}
+        </ul>
+      </nav>
+    </div>
   )
 }
 

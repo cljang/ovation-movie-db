@@ -1,0 +1,60 @@
+@use "../global/variables" as *;
+
+.searchbar {
+  display: grid;
+  grid-template-areas: "searchbar clear button";
+  grid-template-columns: 1fr min-content min-content;
+  gap: 0.25rem;
+  align-items: center;
+  position: relative;
+  max-width: 30rem;
+  margin: 0 1rem;
+  background-color: $grey-blue;
+  border-radius: 1.5rem;        
+
+  .search-input {
+    padding: 0.5rem 1rem;
+    display: block;
+    color: $white;
+    background-color: transparent;
+    border: none;
+    border-radius: 1.5rem 0 0 1.5rem;
+
+    &::placeholder {
+      color: $light-grey-blue;
+    }
+
+    &::-webkit-search-cancel-button {
+      display: none;
+    }
+  }
+
+  button {
+    height: 100%;
+    padding: 0.5rem;
+    background-color: transparent;
+    border: none;
+    color: $white;
+
+    svg {
+      display: block;
+    }
+  }
+
+  .clear-btn {
+    grid-area: clear;
+  }
+
+  .search-btn {
+    grid-area: button;
+    margin-right: 0.5rem;
+  }
+
+  @media (min-width: 500px) {
+    margin: 0 auto;
+  }
+
+  @media (min-width: $bp-laptop) {
+    flex-grow: 1;
+  }
+}

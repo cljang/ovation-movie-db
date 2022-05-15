@@ -79,35 +79,39 @@ header {
     }
   
     // Nav Menu
-    &-nav {
-      display: block;
+    &-menu {
       position: absolute;
-      background-color: $grey-dark;
       top: -15rem;
-      width: 100%;
+      background-color: $grey-dark;
       padding: 0;
+      width: 100%;
       transition: top 0.3s ease-in-out;
       z-index: -1;
   
-      ul {
-        list-style: none;
-        color: $white;
-        padding: 0;
-        text-align: center;
-  
-        a {
-          display: block;
+      nav {
+        display: block;
+
+        ul {
+          list-style: none;
           color: $white;
-          font-size: 1.25rem;
-          text-decoration: none;
-          padding: 1rem;
-          transition: background-color 0.2s ease-in-out;
+          padding: 0;
+          text-align: center;
     
-          &:hover {
-            background-color: $grey-blue;
+          a {
+            display: block;
+            color: $white;
+            font-size: 1.25rem;
+            text-decoration: none;
+            padding: 1rem;
+            transition: background-color 0.2s ease-in-out;
+      
+            &:hover {
+              background-color: $grey-blue;
+            }
           }
         }
       }
+
   
       &.navbar-toggled {
         top: 4.5rem;
@@ -130,10 +134,19 @@ header {
         display: none;
       }
   
-      &-nav {
+      &-menu {
         position: static;
         width: unset;
         z-index: unset;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-grow: 1;
+
+        .searchbar {
+          order: 1;
+          margin-right: 1rem;
+        }
   
         ul {
           display: flex;
