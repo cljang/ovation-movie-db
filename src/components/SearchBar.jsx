@@ -45,7 +45,7 @@ function SearchBar() {
         id="site-search" 
         className="search-input"
         placeholder="Search for a Movie..."
-        autocomplete="off"
+        autoComplete="off"
         value={searchQuery}
         onChange={handleSearchInput}
         ref={searchInputRef}

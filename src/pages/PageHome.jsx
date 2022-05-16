@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback, useRef } from "react"
 import { useSelector } from "react-redux"
 import { appTitle, endpointGetMovies } from "../global/globals"
 import { API_KEY } from "../global/api-key"
@@ -12,6 +12,15 @@ const PageHome = () => {
   const selectedMovieFilter = useSelector((state) => state.movieFilter.value);
   // Movie List
   const [movieList, setMovieList] = useState(false);
+  // const [moviePage, setMoviePage] = useState(1);
+  const [totalPages, setTotalPages] = useState(false);
+  const moviePage = useRef(1)
+  const getMoviePage = () => {
+    return moviePage.current;
+  }
+  const setMoviePage = (value) => {
+    moviePage.current = value;
+  }
 
   // On mount: 
   //    Set document title
@@ -21,18 +30,39 @@ const PageHome = () => {
     window.scrollTo(0, 0); 
   }, [])
 
+  const fetchMovies = useCallback(async () => {
+    const res = await fetch(`${endpointGetMovies}${selectedMovieFilter}?api_key=${API_KEY}&page=${getMoviePage()}`);
+    const data = await res.json();
+    const selectedMovies = data.results;
+    if (getMoviePage() === 1) {
+      setMovieList(selectedMovies)
+    } else {
+      setMovieList(movieList => [...movieList, ...selectedMovies]);
+    }
+    setTotalPages(data.total_pages)
+  }, [selectedMovieFilter])
+
+  const handleLoadMore = () => {
+    setMoviePage(getMoviePage() + 1);
+    fetchMovies();
+  }
+
   // Re-fetch movies if the selectedMovieFilter changes - this will also occur on page load
   useEffect(() => {
-    const fetchMovies = async () => {
-      const res = await fetch(`${endpointGetMovies}${selectedMovieFilter}?api_key=${API_KEY}`);
-      const data = await res.json();
-      const selectedMovies = data.results;
-      setMovieList(selectedMovies);
-    }
+    // const fetchInitialMovies = async () => {
+    //   const res = await fetch(`${endpointGetMovies}${selectedMovieFilter}?api_key=${API_KEY}`);
+    //   const data = await res.json();
+    //   const selectedMovies = data.results;
+    //   // setMoviePage(data.page);
+    //   // setTotalPages(data.total_pages);
+    //   setMovieList(selectedMovies)
+    // }
 
-    fetchMovies();
-  }, [selectedMovieFilter])
-  
+    // fetchInitialMovies();
+    fetchMovies()
+  }, [fetchMovies])
+
+ 
 
   return (
       <section className="page-home">
@@ -42,6 +72,9 @@ const PageHome = () => {
             <MovieFilter />
             {movieList && <MovieContainer movieList={movieList} />}
           </div>
+          <button onClick={handleLoadMore}>
+            Load more <span className="screen-reader-text">movies</span>
+          </button>
       </section>
   );
 
