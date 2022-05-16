@@ -34,7 +34,7 @@ function MovieCarousel({movieList}) {
               <div className='carousel-text'>
                 <h3 className='movie-title'>{movie.title}</h3>
                 <p className='movie-overview'>{movie.overview}</p>
-                <MovieInfoButton movie={movie}/>
+                <MovieInfoButton movie={movie} tabIndex={-1}/>
               </div>
             </SwiperSlide>
           )

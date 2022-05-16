@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { addFavourite, removeFavourite } from "../features/favourites/favouritesListSlice";
 
-function FavouriteHeart( { movie } ) {
+function FavouriteHeart( { movie, tabIndex, onBlur, onFocus } ) {
   const [favourited, setFavourited] = useState(false)
 
   const favouritesList = useSelector((state) => state.favouritesList.value)
@@ -31,10 +31,22 @@ function FavouriteHeart( { movie } ) {
   }, [favouritesList, movie])
 
   return (
-    <button className={"favourite-heart" + (favourited ? " favourite" : " no-favourite")} onClick={toggleHeart}>
+    <button 
+      className={"favourite-heart" + (favourited ? " favourite" : " no-favourite")} 
+      onClick={toggleHeart}
+      tabIndex={tabIndex}
+      onBlur={onBlur}
+      onFocus={onFocus}
+    >
       {favourited ? <FaHeart /> : <FaRegHeart />}
     </button>
   )
+}
+
+FavouriteHeart.defaultProps = {
+  tabIndex: 0,
+  onBlur: () => {},
+  onFocus: () => {},
 }
 
 export default FavouriteHeart

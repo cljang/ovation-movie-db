@@ -71,10 +71,10 @@ const PageHome = () => {
           <div className="main-content">
             <MovieFilter />
             {movieList && <MovieContainer movieList={movieList} />}
+            <button onClick={handleLoadMore}>
+              Load more <span className="screen-reader-text">movies</span>
+            </button>
           </div>
-          <button onClick={handleLoadMore}>
-            Load more <span className="screen-reader-text">movies</span>
-          </button>
       </section>
   );
 
