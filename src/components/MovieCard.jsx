@@ -12,6 +12,14 @@ function MovieCard({movie}) {
   const flipCard = () => {
     setFlipped(!flipped);
   }
+  
+  const openCard = () => {
+    setFlipped(true);
+  } 
+
+  const closeCard = () => {
+    setFlipped(false);
+  } 
 
   const movieCardID = `movie-${movie.id}`
   return (
@@ -19,12 +27,19 @@ function MovieCard({movie}) {
       <img src={movie.poster_path ? `${pathToPoster}${movie.poster_path}` : placeholderPoster} alt={movie.title} className="movie-card-poster" />
       <div className="movie-card-overlay" onClick={flipCard}>
         <MovieRating rating={movie.vote_average}/>
-        <FavouriteHeart movie={movie}/>
+        <FavouriteHeart 
+          movie={movie}
+          onFocus={openCard}
+          onBlur={closeCard}
+        />
         <h3 className="movie-title">{movie.title}</h3>
         <p className="movie-release-date">{movie.release_date}</p>
         <p className="movie-overview">{movie.overview ? movie.overview : ""}</p>
-        {/* <Link to={`/movie/${movie.id}`} className="movie-info-button">More Info</Link> */}
-        <MovieInfoButton movie={movie}/>
+        <MovieInfoButton 
+          movie={movie}
+          onFocus={openCard}
+          onBlur={closeCard}
+        />
       </div>
     </article>
   );
