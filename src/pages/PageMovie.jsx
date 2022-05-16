@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { endpointMovieSearch, pathToOriginalImage } from "../global/globals";
+import { endpointGetMovies, pathToOriginalImage } from "../global/globals";
 import { API_KEY } from "../global/api-key";
 import { appTitle } from "../global/globals";
 import placeholderPoster from "../images/placeholder_poster.png";
@@ -14,22 +14,24 @@ function PageMovie() {
 
   const navigate = useNavigate();
 
-  // On mount, set document title
+  // On mount: 
+  //    Set document title
+  //    Scroll back to the top
   useEffect(() => {
     if (movie) {
       document.title = `${movie.title} - ${appTitle}`
+      window.scrollTo(0, 0)
     }
   }, [movie])
 
   // On mount, scroll back to the top
   useEffect(() => {
-    window.scrollTo(0, 0)
   }, [])
 
   // Once id is set, call API to get movie details 
   useEffect(() => {
     const fetchMovie = async () => {
-      const res = await fetch(`${endpointMovieSearch}${id}?api_key=${API_KEY}`)
+      const res = await fetch(`${endpointGetMovies}${id}?api_key=${API_KEY}`)
 
       // If Invalid Id, redirect to 404
       if (res.status !== 200) {

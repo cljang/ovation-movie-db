@@ -9,14 +9,12 @@ const PageFavourite = () => {
 
   const favouritesList = useSelector((state) => state.favouritesList.value);
   
-  // On mount, set document title
+  // On mount: 
+  //    Set document title
+  //    Scroll back to the top
   useEffect(() => {
-    document.title = `Favourites - ${appTitle}`
-  }, [])
-  
-  // On mount, scroll back to the top
-  useEffect(() => {
-    window.scrollTo(0, 0)
+    document.title = `Favourites - ${appTitle}`;
+    window.scrollTo(0, 0);
   }, [])
 
   return (

@@ -1,0 +1,7 @@
+@use "../global/variables" as *;
+
+.page-search {
+  & > h3 {
+    text-align: center;
+  }
+}

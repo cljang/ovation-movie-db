@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useSelector } from "react-redux"
-import { appTitle, endpointMovieSearch } from "../global/globals"
+import { appTitle, endpointGetMovies } from "../global/globals"
 import { API_KEY } from "../global/api-key"
 import MovieCarousel from "../components/MovieCarousel"
 import MovieContainer from "../components/MovieContainer";
@@ -13,20 +13,18 @@ const PageHome = () => {
   // Movie List
   const [movieList, setMovieList] = useState(false);
 
-  // On mount, set document title
+  // On mount: 
+  //    Set document title
+  //    Scroll back to the top
   useEffect(() => {
     document.title = `${appTitle}`
-  }, [])
-  
-  // On mount, scroll back to the top
-  useEffect(() => {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0); 
   }, [])
 
   // Re-fetch movies if the selectedMovieFilter changes - this will also occur on page load
   useEffect(() => {
     const fetchMovies = async () => {
-      const res = await fetch(`${endpointMovieSearch}${selectedMovieFilter}?api_key=${API_KEY}`);
+      const res = await fetch(`${endpointGetMovies}${selectedMovieFilter}?api_key=${API_KEY}`);
       const data = await res.json();
       const selectedMovies = data.results;
       setMovieList(selectedMovies);

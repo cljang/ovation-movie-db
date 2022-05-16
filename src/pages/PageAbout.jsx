@@ -3,15 +3,13 @@ import { appTitle } from "../global/globals";
 import tmdbLogo from "../images/tmdb-logo.svg"
 
 const PageAbout = () => {
-
-  // On mount, set document title
+  
+  // On mount: 
+  //    Set document title
+  //    Scroll back to the top
   useEffect(() => {
-    document.title = `About - ${appTitle}`
-  }, [])
-
-  // On mount, scroll back to the top
-  useEffect(() => {
-    window.scrollTo(0, 0)
+    document.title = `About - ${appTitle}`;
+    window.scrollTo(0, 0);
   }, [])
 
   return (
