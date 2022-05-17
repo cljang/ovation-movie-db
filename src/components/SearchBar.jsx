@@ -43,6 +43,7 @@ function SearchBar() {
         type="search" 
         name="query" 
         id="site-search" 
+        aria-label="Search"
         className="search-input"
         placeholder="Search for a Movie..."
         autoComplete="off"
@@ -57,13 +58,14 @@ function SearchBar() {
         onClick={handleSearchClear}
       >
         <ClearIcon />
+        <span className="screen-reader-text">Clear Search Query</span>
       </button>}
       <button 
         type="submit"
         className="search-btn"
       >
         <SearchIcon className="search-icon"/>
-        <span className="screen-reader-text">Search for a movie</span>
+        <span className="screen-reader-text">Search</span>
       </button>
       <input type="submit" hidden />
     </form>

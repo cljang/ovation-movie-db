@@ -13,7 +13,7 @@ const PageHome = () => {
   // Movie List
   const [movieList, setMovieList] = useState(false);
   // const [moviePage, setMoviePage] = useState(1);
-  const [totalPages, setTotalPages] = useState(false);
+  const [totalPages, setTotalPages] = useState(3);
   const moviePage = useRef(1)
   const getMoviePage = () => {
     return moviePage.current;
@@ -39,7 +39,7 @@ const PageHome = () => {
     } else {
       setMovieList(movieList => [...movieList, ...selectedMovies]);
     }
-    setTotalPages(data.total_pages)
+    // setTotalPages(data.total_pages)
   }, [selectedMovieFilter])
 
   const handleLoadMore = () => {
