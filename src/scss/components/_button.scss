@@ -1,12 +1,13 @@
 @use "../global/variables" as *;
 
-.movie-info-button {
+.btn {
   display: inline-block;
   text-align: center;
   background-color: $blue;
   color: $white;
   text-decoration: none;
   padding: 0.5rem 2rem;
+  border: none;
   border-radius: 2rem;
 
   &:hover,

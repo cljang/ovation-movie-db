@@ -5,7 +5,7 @@ function MovieInfoButton( { movie, tabIndex, onBlur, onFocus } ) {
     movie && 
       <Link 
         to={`/movie/${movie.id}`} 
-        className="movie-info-button"
+        className="btn"
         tabIndex={tabIndex}
         onBlur={onBlur}
         onFocus={onFocus}

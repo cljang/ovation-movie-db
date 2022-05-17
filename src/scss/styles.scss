@@ -4,12 +4,6 @@
 
 @use "./global/base";
 
-// Pages
-@use "./pages/home";
-@use "./pages/about";
-@use "./pages/favourites";
-@use "./pages/movie";
-@use "./pages/search";
 
 // Components
 @use "./components/header";
@@ -18,8 +12,15 @@
 @use "./components/movieFilter";
 @use "./components/movieContainer";
 @use "./components/movieCard";
-@use "./components/movieInfoButton";
+@use "./components/button";
 @use "./components/movieRating";
 @use "./components/favouriteHeart";
-
 @use "./components/footer";
+
+// Pages
+@use "./pages/home";
+@use "./pages/about";
+@use "./pages/favourites";
+@use "./pages/movie";
+@use "./pages/search";
+@use "./pages/page404";
