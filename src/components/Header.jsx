@@ -17,6 +17,20 @@ function Header() {
     dispatch(toggleNav(navOpen))
   }
 
+  
+  useEffect(() => {
+    const isDesktop = (e) => {
+      if(e.matches){
+        dispatch(closeNav());
+      }
+    }
+    
+    let mediaQuery = window.matchMedia('(min-width: 56.25rem)');
+    mediaQuery.addEventListener('change', isDesktop);
+    // this is the cleanup function to remove the listener
+    return () => mediaQuery.removeEventListener('change', isDesktop);
+}, [dispatch]);
+
   useEffect(() => {
     // Function that checks if there is a current reference and it doesn't contain the target
     // Clicked outside the nav element or the button (handles closing on its own)
