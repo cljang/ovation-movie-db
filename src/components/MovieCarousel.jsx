@@ -4,9 +4,15 @@ import "../scss/components/_movieCarousel.scss"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination, Autoplay } from "swiper";
 import { pathToOriginalImage } from "../global/globals";
+import { useSelector, useDispatch } from "react-redux"
+import { closeNav } from "../features/navOpen/navOpenSlice"
 import MovieInfoButton from './MovieInfoButton';
 
 function MovieCarousel({movieList}) {
+  
+  const navOpen = useSelector((state) => state.navOpen.value);
+  
+  const dispatch = useDispatch()
 
   const settings = {
     // spaceBetween: 10,
@@ -22,9 +28,15 @@ function MovieCarousel({movieList}) {
     }
   }
 
+  // Add a special exception when clicking the carousel to close the navMenu
+  // Clicking outside navMenu usually closes the navMenu, but its a bit broken when clicking on swiper
+  const handleSlideClick = () => {
+    dispatch(closeNav());
+  }
+
   return (
     movieList && movieList.length > 0 &&
-      <Swiper {...settings} className="movie-carousel">
+      <Swiper {...settings} className="movie-carousel" onClick={handleSlideClick}>
         {movieList.map((movie => {
           return (
             <SwiperSlide key={movie.id} className="carousel-slide">

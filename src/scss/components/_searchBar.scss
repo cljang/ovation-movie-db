@@ -8,7 +8,7 @@
   align-items: center;
   position: relative;
   max-width: 30rem;
-  margin: 0 1rem;
+  margin: 1rem;
   background-color: $grey-blue;
   border-radius: 1.5rem;        
 
@@ -52,7 +52,7 @@
   }
 
   @media (min-width: 500px) {
-    margin: 0 auto;
+    margin: 1rem auto;
   }
 
   @media (min-width: $bp-laptop) {

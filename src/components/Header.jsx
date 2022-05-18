@@ -19,7 +19,7 @@ function Header() {
 
   useEffect(() => {
     // Function that checks if there is a current reference and it doesn't contain the target
-    // Clicked outside the ref element
+    // Clicked outside the nav element or the button (handles closing on its own)
     const handleClickOutside = (e) => {
       if (navRef.current && 
           !navRef.current.contains(e.target) && 
