@@ -8,10 +8,6 @@ import MovieInfoButton from "./MovieInfoButton";
 function MovieCard({movie}) {
 
   const [ flipped, setFlipped ] = useState(false);
-
-  const flipCard = () => {
-    setFlipped(!flipped);
-  }
   
   const openCard = () => {
     setFlipped(true);
@@ -25,7 +21,7 @@ function MovieCard({movie}) {
   return (
     <article id={movieCardID} className={"movie-card" + (flipped ? " flipped" : "")}>
       <img src={movie.poster_path ? `${pathToPoster}${movie.poster_path}` : placeholderPoster} alt={movie.title} className="movie-card-poster" />
-      <div className="movie-card-overlay" onClick={flipCard}>
+      <div className="movie-card-overlay">
         <MovieRating rating={movie.vote_average}/>
         <FavouriteHeart 
           movie={movie}
