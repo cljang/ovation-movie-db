@@ -1,13 +1,10 @@
 import { useState, useRef } from "react";
 import { FaSearch as SearchIcon, FaTimes as ClearIcon } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-// import { useSelector } from "react-redux"
 
 
 function SearchBar({ tabIndex }) {
   const [ searchQuery, setSearchQuery ] = useState("");
-  
-  // const navOpen = useSelector((state) => state.navOpen.value);
 
   const searchInputRef = useRef();
 
