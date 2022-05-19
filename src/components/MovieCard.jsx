@@ -55,7 +55,6 @@ function MovieCard({movie}) {
           movie={movie}
           onFocus={openCard}
           onBlur={closeCard}
-          // Make the button out of the card when not flipped to prevent it from being clicked{position: "absolute", left: "100%"}
           disabled={!flipped}
         />
         <h3 className="movie-title">{movie.title}</h3>
@@ -65,7 +64,6 @@ function MovieCard({movie}) {
           movie={movie}
           onFocus={openCard}
           onBlur={closeCard}
-          // Make the button out of the card when not flipped to prevent it from being clicked
           disabled={!flipped}
         />
       </div>
