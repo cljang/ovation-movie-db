@@ -1,13 +1,13 @@
 import { useState, useRef } from "react";
 import { FaSearch as SearchIcon, FaTimes as ClearIcon } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux"
+// import { useSelector } from "react-redux"
 
 
-function SearchBar() {
+function SearchBar({ tabIndex }) {
   const [ searchQuery, setSearchQuery ] = useState("");
   
-  const navOpen = useSelector((state) => state.navOpen.value);
+  // const navOpen = useSelector((state) => state.navOpen.value);
 
   const searchInputRef = useRef();
 
@@ -53,14 +53,14 @@ function SearchBar() {
         value={searchQuery}
         onChange={handleSearchInput}
         ref={searchInputRef}
-        tabIndex={navOpen ? 0 : -1}
+        tabIndex={tabIndex}
       />
       {searchQuery && 
       <button 
         type="reset"
         className="clear-btn"
         onClick={handleSearchClear}
-        tabIndex={navOpen ? 0 : -1}
+        tabIndex={tabIndex}
       >
         <ClearIcon />
         <span className="screen-reader-text">Clear Search Query</span>
@@ -68,7 +68,7 @@ function SearchBar() {
       <button 
         type="submit"
         className="search-btn"
-        tabIndex={navOpen ? 0 : -1}
+        tabIndex={tabIndex}
       >
         <SearchIcon className="search-icon"/>
         <span className="screen-reader-text">Search</span>

@@ -39,7 +39,7 @@ const PageHome = () => {
     } else {
       setMovieList(movieList => [...movieList, ...selectedMovies]);
     }
-    // setTotalPages(data.total_pages)
+    setTotalPages(data.total_pages)
   }, [selectedMovieFilter])
 
   const handleLoadMore = () => {
