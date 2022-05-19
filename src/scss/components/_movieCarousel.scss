@@ -4,6 +4,20 @@
   display: block;
   position: relative;
   background-color: $dark-blue;
+
+  animation: fade-in-down 0.5s ease-out;
+
+  @keyframes fade-in-down {
+    0% {
+      opacity: 0;
+      bottom: 20rem;
+    }
+    100% {
+      opacity: 1;
+      bottom: 0;
+    }
+
+  }
   
   .carousel-slide {
     background-color: $dark-blue;

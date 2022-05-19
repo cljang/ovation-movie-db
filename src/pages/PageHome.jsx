@@ -12,8 +12,7 @@ const PageHome = () => {
   const selectedMovieFilter = useSelector((state) => state.movieFilter.value);
   // Movie List
   const [movieList, setMovieList] = useState(false);
-  // const [moviePage, setMoviePage] = useState(1);
-  const [totalPages, setTotalPages] = useState(3);
+
   const moviePage = useRef(1)
   const getMoviePage = () => {
     return moviePage.current;
@@ -39,7 +38,6 @@ const PageHome = () => {
     } else {
       setMovieList(movieList => [...movieList, ...selectedMovies]);
     }
-    setTotalPages(data.total_pages)
   }, [selectedMovieFilter])
 
   const handleLoadMore = () => {
@@ -49,36 +47,26 @@ const PageHome = () => {
 
   // Re-fetch movies if the selectedMovieFilter changes - this will also occur on page load
   useEffect(() => {
-    // const fetchInitialMovies = async () => {
-    //   const res = await fetch(`${endpointGetMovies}${selectedMovieFilter}?api_key=${API_KEY}`);
-    //   const data = await res.json();
-    //   const selectedMovies = data.results;
-    //   // setMoviePage(data.page);
-    //   // setTotalPages(data.total_pages);
-    //   setMovieList(selectedMovies)
-    // }
-
-    // fetchInitialMovies();
     fetchMovies()
-  }, [fetchMovies])
+  }, [fetchMovies, selectedMovieFilter])
 
  
 
   return (
-      <section className="page-home">
-          <h2 className="screen-reader-text">Home</h2>
-          {movieList && <MovieCarousel movieList={movieList.slice(0,3)}/>}
-          <div className="main-content">
-            <MovieFilter />
-            {movieList && <MovieContainer movieList={movieList} />}
-            <button 
-              onClick={handleLoadMore}
-              className="btn"
-            >
-              Load more <span className="screen-reader-text">movies</span>
-            </button>
-          </div>
-      </section>
+    <section className="page-home">
+      <h2 className="screen-reader-text">Home</h2>
+      {movieList && <MovieCarousel movieList={movieList.slice(0,3)}/>}
+      <div className="main-content">
+        <MovieFilter />
+        {movieList && <MovieContainer movieList={movieList} />}
+        <button 
+          onClick={handleLoadMore}
+          className="btn"
+        >
+          Load more <span className="screen-reader-text">movies</span>
+        </button>
+      </div>
+    </section>
   );
 
 };

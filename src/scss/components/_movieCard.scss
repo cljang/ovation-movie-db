@@ -4,6 +4,19 @@
   position: relative;
   border-radius: 1rem;
   overflow: hidden;
+  animation: fade-in-up 0.3s ease-out;
+
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      top: 10rem;
+    }
+    100% {
+      opacity: 1;
+      top: 0;
+    }
+
+  }
 
   &-poster {
     display: block;
