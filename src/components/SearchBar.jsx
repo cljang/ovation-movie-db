@@ -1,6 +1,8 @@
 import { useState, useRef } from "react";
 import { FaSearch as SearchIcon, FaTimes as ClearIcon } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux"
+import { closeNav } from "../features/navOpen/navOpenSlice"
 
 
 function SearchBar({ tabIndex }) {
@@ -10,6 +12,8 @@ function SearchBar({ tabIndex }) {
 
   const navigate = useNavigate();
 
+  const dispatch = useDispatch()
+
   const clearSearch = () => {
     setSearchQuery("");
   }
@@ -17,11 +21,10 @@ function SearchBar({ tabIndex }) {
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     searchInputRef.current.blur();
-    console.log(searchInputRef);
     if ( searchQuery ) {
-      console.log(searchQuery);
       navigate(`/search/${searchQuery}`)
       clearSearch();
+      dispatch(closeNav());
     }
   }
 
