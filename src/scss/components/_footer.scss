@@ -10,12 +10,17 @@ footer {
   }
 
   .footer-content {
-    max-width: 40rem;
+    max-width: 30rem;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 4rem 2rem;
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 2rem;
 
     & > * {
-      margin-bottom: 2rem;
+      width: 100%;
     }
 
     a {
@@ -79,6 +84,10 @@ footer {
       flex-wrap: wrap;
       justify-content: space-around;
       max-width: 50rem;
+
+      & > * {
+        width: unset;
+      }
 
       .site-map {
         width: 25rem;

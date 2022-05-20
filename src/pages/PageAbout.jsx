@@ -13,7 +13,7 @@ const PageAbout = () => {
   }, [])
 
   return (
-      <section className="page-about">
+      <section className="page page-about">
         <h2>About</h2>
         <div className="about-content">
           <p><span className="app-title">ovation.</span> is an online movie database that enables users to track their favourite movies.</p>

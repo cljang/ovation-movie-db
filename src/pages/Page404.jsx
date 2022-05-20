@@ -14,7 +14,7 @@ const Page404 = () => {
   }, [])
 
   return (
-      <section className="page-404">
+      <section className="page page-404">
         <h2>404</h2>
         <div className="content">
           <img src={confusedFace} alt="A confused emoticon" />

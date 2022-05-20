@@ -31,7 +31,7 @@ const PageSearch = () => {
   }, [query])
 
   return (
-      <section className="page-search">
+      <section className="page page-search">
         <h2>Search Results</h2>
         <h3>Results for "{query}"</h3>
         {resultsList && <MovieContainer movieList={resultsList} />}

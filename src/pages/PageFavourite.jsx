@@ -18,7 +18,7 @@ const PageFavourite = () => {
   }, [])
 
   return (
-      <section className="page-favourites">
+      <section className="page page-favourites">
         <h2>Favourites</h2>
         {favouritesList.length > 0 ? 
           <MovieContainer movieList={favouritesList}/> : 

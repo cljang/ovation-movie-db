@@ -58,7 +58,7 @@ function PageMovie() {
   }
 
   return (
-    <section className="page-movie">
+    <section className="page page-movie">
       {movie.backdrop_path && 
         <div className="movie-backdrop">
           <div className="backdrop-image" style={style}></div>
