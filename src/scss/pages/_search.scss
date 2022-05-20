@@ -1,7 +1,8 @@
 @use "../global/variables" as *;
 
 .page-search {
-  & > h3 {
+  .search-query {
     text-align: center;
+    word-break: break-all;
   }
 }
