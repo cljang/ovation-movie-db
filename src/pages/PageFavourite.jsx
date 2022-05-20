@@ -3,7 +3,7 @@ import { appTitle } from "../global/globals";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import MovieContainer from "../components/MovieContainer";
-import confusedFace from "../images/confused-face.svg"
+import confusedFace from "../images/confused-face.svg";
 
 const PageFavourite = () => {
 
