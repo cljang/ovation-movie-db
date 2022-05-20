@@ -37,14 +37,19 @@
     grid-area: content;
     z-index: 1;
     display: grid;
+    grid-template-areas: 
+      "poster"
+      "text";
     grid-template-columns: 1fr;
     gap: 2rem;
 
     .movie-poster {
+      grid-area: poster;
       border-radius: 1rem;
     }
 
     .movie-text {
+      grid-area: text;
       // Layout
       display: grid;
       grid-template-areas: 
@@ -54,6 +59,7 @@
         "overview overview";
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(4, min-content);
+      gap: 1rem;
   
       .movie-rating {
         grid-area: rating;
@@ -68,7 +74,7 @@
   
       .movie-title {
         grid-area: title;
-        margin-top: 1rem;
+        margin: 0;
         width: 100%;
         text-align: left;
         font-size: 1.5rem;
@@ -76,25 +82,43 @@
   
       .movie-release-date {
         grid-area: date;
+        margin: 0;
       }
   
       .movie-runtime {
         grid-area: time;
+        margin: 0;
         justify-self: flex-end;
       }
   
       .movie-overview {
         grid-area: overview;
+        margin: 0;
+      }
+      
+    
+      @media (min-width: $bp-desktop) {
+        font-size: 1.25rem;
+
+        .movie-title {
+          font-size: 2rem;
+        }
       }
     }
 
     @media (min-width: $bp-tablet) {
       display: grid;
-      grid-template-columns: 1fr 3fr;
+      grid-template-areas: 
+        "poster text";
+      grid-template-columns: 1fr 2fr;
       gap: 2rem;
       padding: 2rem;
-      background-color: rgba($black, 0.75);
+      background-color: rgba($black, 0.5);
       border-radius: 2rem;
+    }
+    
+    @media (min-width: $bp-desktop) {
+      grid-template-columns: 1fr 3fr;
     }
   }
 }
