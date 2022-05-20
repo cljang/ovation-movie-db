@@ -89,7 +89,7 @@
 
   // Can hover card or toggle flip card on click
   // &:hover,
-  &.flipped {
+  &.card-open {
     .movie-card-poster {
       transform: scale(1.25);
     }

@@ -7,45 +7,50 @@ import MovieInfoButton from "./MovieInfoButton";
 
 function MovieCard({movie}) {
 
-  const [ flipped, setFlipped ] = useState(false);
-  const [ isClicked, setIsClicked ] = useState(false);
+  // Track whether card is open (overlay showing) or closed (overlay hidden)
+  const [ cardOpen, setCardOpen ] = useState(false);
+  // Allow cards to be locked open
+  const [ lockedOpen, setLockedOpen ] = useState(false);
 
+  // Utility Functions to open/close cards freely
   const openCard = () => {
-    setFlipped(true);
+    setCardOpen(true);
   } 
 
   const closeCard = () => {
-    setFlipped(false);
+    setCardOpen(false);
   } 
 
-  const handleMouseEnter = () => {
-    if (!isClicked) {
+  // Functions to open and close cards as long as they are not locked open
+  const controlledOpen = () => {
+    if (!lockedOpen) {
       openCard();
     }
   }
   
-  const handleMouseLeave = () => {
-    if (!isClicked) {
+  const controlledClose = () => {
+    if (!lockedOpen) {
       closeCard();
     }
   }
 
+  // Toggle cards to be locked/unlocked on click
   const handleClick = () => {
-    if (!isClicked) {
+    if (!lockedOpen) {
       openCard()
     } else {
       closeCard()
     }
-    setIsClicked(!isClicked);
+    setLockedOpen(!lockedOpen);
   }
 
   const movieCardID = `movie-${movie.id}`
   return (
     <article 
       id={movieCardID} 
-      className={"movie-card" + (flipped ? " flipped" : "")}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      className={"movie-card" + (cardOpen ? " card-open" : "")}
+      onMouseEnter={controlledOpen}
+      onMouseLeave={controlledClose}
       onClick={handleClick}
     >
       <img src={movie.poster_path ? `${pathToPoster}${movie.poster_path}` : placeholderPoster} alt={movie.title} className="movie-card-poster" />
@@ -53,18 +58,18 @@ function MovieCard({movie}) {
         <MovieRating rating={movie.vote_average}/>
         <FavouriteHeart 
           movie={movie}
-          onFocus={openCard}
-          onBlur={closeCard}
-          disabled={!flipped}
+          onFocus={controlledOpen}
+          onBlur={controlledClose}
+          disabled={!cardOpen}
         />
         <h3 className="movie-title">{movie.title}</h3>
         <p className="movie-release-date">{movie.release_date}</p>
         <p className="movie-overview">{movie.overview ? movie.overview : ""}</p>
         <MovieInfoButton 
           movie={movie}
-          onFocus={openCard}
-          onBlur={closeCard}
-          disabled={!flipped}
+          onFocus={controlledOpen}
+          onBlur={controlledClose}
+          disabled={!cardOpen}
         />
       </div>
     </article>

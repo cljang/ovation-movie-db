@@ -19,6 +19,7 @@ MovieInfoButton.defaultProps = {
   tabIndex: 0,
   onBlur: () => {},
   onFocus: () => {},
+  disabled: false,
 } 
 
 export default MovieInfoButton
