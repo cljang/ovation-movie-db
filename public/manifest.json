@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/",
+  "start_url": "/ovation/",
   "display": "standalone",
   "theme_color": "#60aef0",
   "background_color": "#151515"
