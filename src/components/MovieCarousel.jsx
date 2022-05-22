@@ -2,8 +2,8 @@
 import 'swiper/css/bundle';
 import "../scss/components/_movieCarousel.scss"
 import { Swiper, SwiperSlide } from "swiper/react"
-import { Pagination, Autoplay } from "swiper";
-import { pathToOriginalImage } from "../global/globals";
+import { Pagination, Autoplay, Lazy } from "swiper";
+import { pathToBackdrop780, pathToBackdrop1280, pathToOriginalImage } from "../global/globals";
 import { useDispatch } from "react-redux"
 import { closeNav } from "../features/navOpen/navOpenSlice"
 import MovieInfoButton from './MovieInfoButton';
@@ -16,7 +16,7 @@ function MovieCarousel({movieList}) {
     // spaceBetween: 10,
     slidesPerView: 'auto',
     loop: true,
-    modules:[ Pagination, Autoplay ],
+    modules:[ Pagination, Autoplay, Lazy ],
     pagination:{
       clickable: true,
     },
@@ -24,6 +24,7 @@ function MovieCarousel({movieList}) {
       delay: 5000,
       pauseOnMouseEnter: true,
     },
+    lazy: true,
   }
 
   // Add a special exception when clicking the carousel to close the navMenu
@@ -40,10 +41,15 @@ function MovieCarousel({movieList}) {
             <SwiperSlide key={movie.id} className="carousel-slide">
               <div className='movie-backdrop'>
                 {movie.backdrop_path && 
-                  <img 
-                    src={`${pathToOriginalImage}${movie.backdrop_path}`} 
-                    alt={`${movie.title} backdrop`} 
-                  />
+                  <picture>
+                    <source media='(max-width: 400px)' srcSet={movie.backdrop_path ? `${pathToBackdrop780}${movie.backdrop_path}` : ""} />
+                    <source media='(max-width: 720px)' srcSet={movie.backdrop_path ? `${pathToBackdrop1280}${movie.backdrop_path}` : ""} />
+                    <img 
+                      src={`${pathToOriginalImage}${movie.backdrop_path}`} 
+                      alt={`${movie.title} backdrop`} 
+                      className="swiper-lazy"
+                    />
+                  </picture>
                 }
               </div>
               <div className='carousel-text'>

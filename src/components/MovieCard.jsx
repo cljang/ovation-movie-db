@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { pathToPoster } from "../global/globals";
-import placeholderPoster from "../images/placeholder_poster.jpg";
 import MoviePoster from "./MoviePoster";
 import MovieRating from "./MovieRating";
 import FavouriteHeart from "./FavouriteHeart";
