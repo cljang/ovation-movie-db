@@ -7,7 +7,7 @@ import { appTitle } from "../global/globals";
 // import placeholderBackdropJpg from "../images/placeholder_backdrop.jpg";
 // import placeholderPoster from "../images/placeholder_poster.webp";
 // import placeholderBackdrop from "../images/placeholder_backdrop.webp";
-import Poster from "../components/Poster";
+import MoviePoster from "../components/MoviePoster";
 import MovieRating from "../components/MovieRating";
 import FavouriteHeart from "../components/FavouriteHeart";
 
@@ -71,7 +71,7 @@ function PageMovie() {
         </div>
       }
       <div className="movie-content">
-        <Poster 
+        <MoviePoster 
           posterPath={movie.poster_path ? `${pathToOriginalImage}${movie.poster_path}` : ""}
           alt={`${movie.title} poster`}
           className="movie-poster"

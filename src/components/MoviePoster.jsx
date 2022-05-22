@@ -1,7 +1,7 @@
 import placeholderPosterJpg from "../images/placeholder_poster.jpg";
 import placeholderPoster from "../images/placeholder_poster.webp";
 
-function Poster({posterPath, alt, className}) {
+function MoviePoster({posterPath, alt, className}) {
   return (
     <picture>
       <source srcSet={posterPath} type="image/jpeg" />
@@ -11,4 +11,4 @@ function Poster({posterPath, alt, className}) {
   )
 }
 
-export default Poster
+export default MoviePoster
