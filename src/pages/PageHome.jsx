@@ -61,7 +61,7 @@ const PageHome = () => {
         {movieList && <MovieContainer movieList={movieList} />}
         <button 
           onClick={handleLoadMore}
-          className="btn"
+          className="btn load-more-btn"
         >
           Load more <span className="screen-reader-text">movies</span>
         </button>
