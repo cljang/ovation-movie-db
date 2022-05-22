@@ -40,6 +40,7 @@ function FavouriteHeart( { movie, tabIndex, onBlur, onFocus, disabled } ) {
       style={{pointerEvents: disabled ? "none" : ""}}
     >
       {favourited ? <FaHeart /> : <FaRegHeart />}
+      <span className="screen-reader-text">Add {movie.title} to favourites</span>
     </button>
   )
 }
