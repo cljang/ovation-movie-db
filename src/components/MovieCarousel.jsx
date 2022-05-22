@@ -24,7 +24,7 @@ function MovieCarousel({movieList}) {
       delay: 5000,
       pauseOnMouseEnter: true,
     },
-    lazy: true,
+    // lazy: true,
   }
 
   // Add a special exception when clicking the carousel to close the navMenu
@@ -40,7 +40,8 @@ function MovieCarousel({movieList}) {
           return (
             <SwiperSlide key={movie.id} className="carousel-slide">
               <div className='movie-backdrop'>
-                {movie.backdrop_path && 
+              <>
+                {/* {movie.backdrop_path && 
                   <picture>
                     <source media='(max-width: 400px)' srcSet={movie.backdrop_path ? `${pathToBackdrop780}${movie.backdrop_path}` : ""} />
                     <source media='(max-width: 720px)' srcSet={movie.backdrop_path ? `${pathToBackdrop1280}${movie.backdrop_path}` : ""} />
@@ -50,7 +51,14 @@ function MovieCarousel({movieList}) {
                       className="swiper-lazy"
                     />
                   </picture>
+                } */}
+                {movie.backdrop_path && 
+                  <img 
+                    src={`${pathToOriginalImage}${movie.backdrop_path}`} 
+                    alt={`${movie.title} backdrop`} 
+                  />
                 }
+              </>
               </div>
               <div className='carousel-text'>
                 <h3 className='movie-title'>{movie.title}</h3>
