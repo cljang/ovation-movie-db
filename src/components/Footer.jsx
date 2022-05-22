@@ -12,15 +12,19 @@ function Footer() {
           <div className="social-icons">
             <Link to={"#"}>
               <FaFacebook />
+              <span className="screen-reader-text">Facebook</span>
             </Link>
             <Link to={"#"}>
               <FaTwitter />
+              <span className="screen-reader-text">Twitter</span>
             </Link>
             <Link to={"#"}>
               <FaInstagram />
+              <span className="screen-reader-text">Instagram</span>
             </Link>
             <Link to={"#"}>
               <FaYoutube />
+              <span className="screen-reader-text">YouTube</span>
             </Link>
           </div>
         </section>
