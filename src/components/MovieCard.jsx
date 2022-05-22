@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { pathToPoster } from "../global/globals";
-import placeholderPoster from "../images/placeholder_poster.png";
+import placeholderPoster from "../images/placeholder_poster.jpg";
+import Poster from "../components/Poster";
 import MovieRating from "./MovieRating";
 import FavouriteHeart from "./FavouriteHeart";
 import MovieInfoButton from "./MovieInfoButton";
+
 
 function MovieCard({movie}) {
 
@@ -53,7 +55,17 @@ function MovieCard({movie}) {
       onMouseLeave={controlledClose}
       onClick={handleClick}
     >
-      <img src={movie.poster_path ? `${pathToPoster}${movie.poster_path}` : placeholderPoster} alt={movie.title} className="movie-card-poster" />
+      <Poster 
+        posterPath={movie.poster_path ? `${pathToPoster}${movie.poster_path}` : ""}
+        alt={`${movie.title} poster`}
+        className="movie-card-poster"
+      />
+      {/* <img 
+        src={movie.poster_path ? `${pathToPoster}${movie.poster_path}` : placeholderPoster} 
+        alt={movie.title} 
+        className="movie-card-poster" 
+        loading="lazy"
+      /> */}
       <div className="movie-card-overlay">
         <MovieRating rating={movie.vote_average}/>
         <FavouriteHeart 

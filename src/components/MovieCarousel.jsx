@@ -4,13 +4,11 @@ import "../scss/components/_movieCarousel.scss"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination, Autoplay } from "swiper";
 import { pathToOriginalImage } from "../global/globals";
-import { useSelector, useDispatch } from "react-redux"
+import { useDispatch } from "react-redux"
 import { closeNav } from "../features/navOpen/navOpenSlice"
 import MovieInfoButton from './MovieInfoButton';
 
 function MovieCarousel({movieList}) {
-  
-  const navOpen = useSelector((state) => state.navOpen.value);
   
   const dispatch = useDispatch()
 
@@ -25,7 +23,7 @@ function MovieCarousel({movieList}) {
     autoplay:{
       delay: 5000,
       pauseOnMouseEnter: true,
-    }
+    },
   }
 
   // Add a special exception when clicking the carousel to close the navMenu
@@ -41,7 +39,12 @@ function MovieCarousel({movieList}) {
           return (
             <SwiperSlide key={movie.id} className="carousel-slide">
               <div className='movie-backdrop'>
-                {movie.backdrop_path && <img src={`${pathToOriginalImage}${movie.backdrop_path}`} alt={`${movie.title} backdrop`} />}
+                {movie.backdrop_path && 
+                  <img 
+                    src={`${pathToOriginalImage}${movie.backdrop_path}`} 
+                    alt={`${movie.title} backdrop`} 
+                  />
+                }
               </div>
               <div className='carousel-text'>
                 <h3 className='movie-title'>{movie.title}</h3>

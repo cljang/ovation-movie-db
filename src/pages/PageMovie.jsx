@@ -3,7 +3,11 @@ import { useParams, useNavigate } from "react-router-dom";
 import { endpointGetMovies, pathToOriginalImage } from "../global/globals";
 import { API_KEY } from "../global/api-key";
 import { appTitle } from "../global/globals";
-import placeholderPoster from "../images/placeholder_poster.png";
+// import placeholderPosterJpg from "../images/placeholder_poster.jpg";
+// import placeholderBackdropJpg from "../images/placeholder_backdrop.jpg";
+// import placeholderPoster from "../images/placeholder_poster.webp";
+// import placeholderBackdrop from "../images/placeholder_backdrop.webp";
+import Poster from "../components/Poster";
 import MovieRating from "../components/MovieRating";
 import FavouriteHeart from "../components/FavouriteHeart";
 
@@ -11,6 +15,7 @@ function PageMovie() {
   const { id } = useParams();
 
   const [movie, setMovie] = useState(false);
+  const [style, setStyle] = useState({})
 
   const navigate = useNavigate();
 
@@ -20,13 +25,9 @@ function PageMovie() {
   useEffect(() => {
     if (movie) {
       document.title = `${movie.title} - ${appTitle}`
-      window.scrollTo(0, 0)
     }
+    window.scrollTo(0, 0)
   }, [movie])
-
-  // On mount, scroll back to the top
-  useEffect(() => {
-  }, [])
 
   // Once id is set, call API to get movie details 
   useEffect(() => {
@@ -53,9 +54,14 @@ function PageMovie() {
   };
 
   // Dynamically set backdrop image
-  const style = {
-    backgroundImage: `url(${pathToOriginalImage}${movie.backdrop_path})`,
-  }
+  // const style = {
+  //   backgroundImage: `url(${pathToOriginalImage}${movie.backdrop_path})`,
+  // }
+  useEffect(() => {
+    if (movie.backdrop_path) {
+      setStyle({backgroundImage: `url(${pathToOriginalImage}${movie.backdrop_path})`})
+    } 
+  }, [movie.backdrop_path])
 
   return (
     <section className="page page-movie">
@@ -65,7 +71,16 @@ function PageMovie() {
         </div>
       }
       <div className="movie-content">
-        <img src={movie.poster_path ? `${pathToOriginalImage}${movie.poster_path}` : placeholderPoster} alt={`${movie.title} poster`} className="movie-poster" />
+        <Poster 
+          posterPath={movie.poster_path ? `${pathToOriginalImage}${movie.poster_path}` : ""}
+          alt={`${movie.title} poster`}
+          className="movie-poster"
+        />
+        {/* <picture>
+          <source srcSet={movie.poster_path ? `${pathToOriginalImage}${movie.poster_path}` : ""} type="image/jpeg" />
+          <source srcSet={placeholderPoster} type="image/webp" />
+          <img src={placeholderPosterJpg} alt={`${movie.title} poster`} className="movie-poster" />
+        </picture> */}
         <div className="movie-text">
           <MovieRating rating={movie.vote_average}/>
           <FavouriteHeart movie={movie}/>
