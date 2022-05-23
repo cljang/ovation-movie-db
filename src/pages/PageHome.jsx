@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { useSelector } from "react-redux"
 import { appTitle, endpointGetMovies } from "../global/globals"
 import { API_KEY } from "../global/api-key"
@@ -14,14 +14,8 @@ const PageHome = () => {
   const [movieList, setMovieList] = useState(false);
   // Movie List
   const [canLoadMore, setCanLoadMore] = useState(true);
-
-  const moviePage = useRef(1)
-  const getMoviePage = () => {
-    return moviePage.current;
-  }
-  const setMoviePage = (value) => {
-    moviePage.current = value;
-  }
+  // Last loaded page
+  const [moviePage, setMoviePage] = useState(1);
 
   // On mount: 
   //    Set document title
@@ -48,8 +42,8 @@ const PageHome = () => {
 
   // Handle loadMore button
   const handleLoadMore = () => {
-    fetchMovies(getMoviePage() + 1);
-    setMoviePage(getMoviePage() + 1);
+    fetchMovies(moviePage + 1);
+    setMoviePage(moviePage + 1);
   }
 
   // Re-fetch movies if the selectedMovieFilter changes - this will also occur on page load
