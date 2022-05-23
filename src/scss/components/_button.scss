@@ -10,6 +10,12 @@
   border: none;
   border-radius: 2rem;
 
+  &.load-more-btn {
+    display: block;
+    margin: 2rem auto 0;
+    line-height: inherit;
+  }
+
   &:hover,
   &:focus {
     background-color: $purple;

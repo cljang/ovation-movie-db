@@ -12,7 +12,7 @@ const PageHome = () => {
   const selectedMovieFilter = useSelector((state) => state.movieFilter.value);
   // Movie List
   const [movieList, setMovieList] = useState(false);
-  // Movie List
+  // Flag for if more pages can be loaded
   const [canLoadMore, setCanLoadMore] = useState(true);
   // Last loaded page
   const [moviePage, setMoviePage] = useState(1);
