@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { endpointGetMovies, pathToOriginalImage } from "../global/globals";
+import { endpointGetMovies, pathToOriginalImage, pathToPoster } from "../global/globals";
 import { API_KEY } from "../global/api-key";
 import { appTitle } from "../global/globals";
 import MoviePoster from "../components/MoviePoster";
@@ -68,15 +68,10 @@ function PageMovie() {
       }
       <div className="movie-content">
         <MoviePoster 
-          posterPath={movie.poster_path ? `${pathToOriginalImage}${movie.poster_path}` : ""}
+          posterPath={movie.poster_path ? `${pathToPoster}${movie.poster_path}` : ""}
           alt={`${movie.title} poster`}
           className="movie-poster"
         />
-        {/* <picture>
-          <source srcSet={movie.poster_path ? `${pathToOriginalImage}${movie.poster_path}` : ""} type="image/jpeg" />
-          <source srcSet={placeholderPoster} type="image/webp" />
-          <img src={placeholderPosterJpg} alt={`${movie.title} poster`} className="movie-poster" />
-        </picture> */}
         <div className="movie-text">
           <MovieRating rating={movie.vote_average}/>
           <FavouriteHeart movie={movie}/>
