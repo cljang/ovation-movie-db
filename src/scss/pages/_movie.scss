@@ -55,7 +55,7 @@
       grid-template-areas: 
         "rating heart"
         "title title"
-        "date time"
+        "release release"
         "overview overview";
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(4, min-content);
@@ -80,15 +80,28 @@
         font-size: 1.5rem;
       }
   
-      .movie-release-date {
-        grid-area: date;
+      .movie-release-info {
+        grid-area: release;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 2rem;
+        padding: 0;
         margin: 0;
-      }
-  
-      .movie-runtime {
-        grid-area: time;
-        margin: 0;
-        justify-self: flex-end;
+        font-size: 1rem;
+
+        & > * {
+          position: relative;
+          margin: 0;
+
+          &::after {
+            content: "•";
+            position: absolute;
+            right: -1.35rem;
+          }
+          &:last-child::after {
+            content: none;
+          }
+        }
       }
   
       .movie-overview {
