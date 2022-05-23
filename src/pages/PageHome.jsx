@@ -12,6 +12,8 @@ const PageHome = () => {
   const selectedMovieFilter = useSelector((state) => state.movieFilter.value);
   // Movie List
   const [movieList, setMovieList] = useState(false);
+  // Movie List
+  const [canLoadMore, setCanLoadMore] = useState(true);
 
   const moviePage = useRef(1)
   const getMoviePage = () => {
@@ -29,25 +31,32 @@ const PageHome = () => {
     window.scrollTo(0, 0); 
   }, [])
 
-  const fetchMovies = useCallback(async () => {
-    const res = await fetch(`${endpointGetMovies}${selectedMovieFilter}?api_key=${API_KEY}&page=${getMoviePage()}`);
+  const fetchMovies = useCallback(async (page) => {
+    const res = await fetch(`${endpointGetMovies}${selectedMovieFilter}?api_key=${API_KEY}&page=${page}`);
     const data = await res.json();
     const selectedMovies = data.results;
-    if (getMoviePage() === 1) {
+    if (page === 1) {
       setMovieList(selectedMovies)
     } else {
       setMovieList(movieList => [...movieList, ...selectedMovies]);
     }
+    // If the total page limit has been reached set the canLoadMore flag
+    if (page >= data.total_pages) {
+      setCanLoadMore(false)
+    }
   }, [selectedMovieFilter])
 
+  // Handle loadMore button
   const handleLoadMore = () => {
+    fetchMovies(getMoviePage() + 1);
     setMoviePage(getMoviePage() + 1);
-    fetchMovies();
   }
 
   // Re-fetch movies if the selectedMovieFilter changes - this will also occur on page load
   useEffect(() => {
-    fetchMovies()
+    fetchMovies(1)
+    setMoviePage(1);
+    setCanLoadMore(true)
   }, [fetchMovies, selectedMovieFilter])
 
  
@@ -59,12 +68,12 @@ const PageHome = () => {
       <div className="main-content">
         <MovieFilter />
         {movieList && <MovieContainer movieList={movieList} />}
-        <button 
+        {canLoadMore && <button 
           onClick={handleLoadMore}
           className="btn load-more-btn"
         >
           Load more <span className="screen-reader-text">movies</span>
-        </button>
+        </button>}
       </div>
     </section>
   );
