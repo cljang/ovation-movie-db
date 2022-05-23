@@ -4,6 +4,7 @@
   display: block;
   position: relative;
   background-color: $dark-blue;
+  line-height: 0;
 
   animation: fade-in-down 0.5s ease-out;
 
@@ -20,141 +21,161 @@
   }
   
   .carousel-slide {
-    background-color: $dark-blue;
+    position: relative;
     width: 100%;
     // Keep the slide square-ish until it is full screen height
     // Compensate for the header height (4.5rem)
     height: min(100vh - 4.5rem, 100vw);
-    
-    display: grid;
-    grid-template-areas: 
-      ". . . . ."
-      ". . text . ."
-      ". . . . .";
-    grid-template-columns: 2rem 1fr minmax(0,$max-width) 1fr 2rem;
-    grid-template-rows: 2rem 1fr 2rem;
-    align-items: center;
-    justify-content: center;
-    
-    .movie-backdrop {
-      grid-column: 1/-1;
-      grid-row: 1/-1;
-      display: block;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background-color: $dark-blue;
+    // Remove space at bottom of slick slide
+    line-height: 1.5;
 
-      img {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-        max-width: unset;
-        display: block;
-        opacity: 25%;
-      }
-    }
-    
-
-    .carousel-text {
-      grid-area: text;
-      text-align: center;
-
-      .movie-title {
-        font-size: 2rem;
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-      }
-
-      .movie-overview {
-        display: none;
-      }
-
-      .btn {
-        display: inline-block;
-        text-align: center;
-        background-color: $blue;
-        color: $white;
-        text-decoration: none;
-        padding: 0.5rem 2rem;
-        border-radius: 2rem;
-  
-        &:hover {
-          background-color: $purple;
-        }
-      }
-
-    }
-
-    @media (min-width: $bp-tablet) {
-      .carousel-text {
-        .movie-title {
-          font-size: 3rem;
-        }
-      }
-      
-    }
-
-    // Switch to wide layout
     @media (min-width: $bp-laptop) {
       // Compensate for the header height (5.5rem)
       height: min(100vh - 5.5rem, 100vw);
       min-height: 25rem;  // Handle long phone landscape edge case
-      grid-template-rows: minmax(2rem, 1fr) min-content minmax(2rem, 5rem);
+    }
+    
+    .movie-backdrop {
+      display: block;
+      height: 100%;
+      width: 100%;
+      background-color: $dark-blue;
+
+      .backdrop-image {
+        display: block;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        opacity: 25%;
+      }
+    }
+    
+    .carousel-content {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-areas: 
+        ". . . . ."
+        ". . text . ."
+        ". . . . .";
+      grid-template-columns: 2rem 1fr minmax(0,$max-width) 1fr 2rem;
+      grid-template-rows: 2rem 1fr 2rem;
+      align-items: center;
+      justify-content: center;
 
       .carousel-text {
-        text-align: left;
-        width: 50%;
-
+        grid-area: text;
+        text-align: center;
+  
         .movie-title {
           font-size: 2rem;
-          -webkit-line-clamp: 2;
-        }
-
-        .movie-overview {
           overflow: hidden;
           display: -webkit-box;
           -webkit-line-clamp: 3;
           -webkit-box-orient: vertical;
-          margin-bottom: 2rem;
+        }
+  
+        .movie-overview {
+          display: none;
+        }
+  
+        .btn {
+          display: inline-block;
+          text-align: center;
+          background-color: $blue;
+          color: $white;
+          text-decoration: none;
+          padding: 0.5rem 2rem;
+          border-radius: 2rem;
+    
+          &:hover {
+            background-color: $purple;
+          }
+        }
+  
+      }
+  
+      @media (min-width: $bp-tablet) {
+        .carousel-text {
+          .movie-title {
+            font-size: 3rem;
+          }
+        }
+        
+      }
+  
+      // Switch to wide layout
+      @media (min-width: $bp-laptop) {
+        grid-template-rows: minmax(2rem, 1fr) min-content minmax(2rem, 5rem);
+  
+        .carousel-text {
+          text-align: left;
+          width: 50%;
+  
+          .movie-title {
+            font-size: 2rem;
+            -webkit-line-clamp: 2;
+          }
+  
+          .movie-overview {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            margin-bottom: 2rem;
+          }
+        }
+      }
+      
+      @media (min-width: $bp-desktop) {
+        .carousel-text {
+          .movie-title {
+            font-size: 3rem;
+            -webkit-line-clamp: 3;
+          }
+  
+          .movie-overview {
+            font-size: 1.5rem;
+            -webkit-line-clamp: 4;
+          }
         }
       }
     }
     
-    @media (min-width: $bp-desktop) {
-      .carousel-text {
-        .movie-title {
-          font-size: 3rem;
-          -webkit-line-clamp: 3;
-        }
-
-        .movie-overview {
-          font-size: 1.5rem;
-          -webkit-line-clamp: 4;
-        }
-      }
-    }
   }
 
-  .swiper-pagination {
+  .slick-dots {
     bottom: 1rem;
 
-    &-bullet {
-      border-radius: 0;
-      height: 0.25rem;
-      width: 2rem;
-      background-color: rgba($white, 0.5);
-
-      &-active {
-        background-color: rgba($blue, 0.5);
+    li {
+      height: unset;
+      width: unset;
+      
+      button {
+        padding: 0;
+        border-radius: 0;
+        height: 0.25rem;
+        width: 2rem;
+        background-color: rgba($white, 0.5);
+        
+        &::before {
+          content: none;
+        }
+        
+        &:focus {
+          outline: auto;
+        }
+        
+        @media (min-width: $bp-tablet) {
+          height: 0.5rem;
+          width: 3rem;
+        }
       }
 
-      
-      @media (min-width: $bp-tablet) {
-        height: 0.5rem;
-        width: 3rem;
+      &.slick-active button {
+        background-color: rgba($blue, 0.5);
       }
     }
   }

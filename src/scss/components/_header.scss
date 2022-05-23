@@ -135,6 +135,7 @@ header {
   
       &-menu {
         width: unset;
+        overflow: unset;
         z-index: unset;
         display: flex;
         justify-content: space-between;
