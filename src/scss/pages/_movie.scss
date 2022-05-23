@@ -39,7 +39,8 @@
     display: grid;
     grid-template-areas: 
       "poster"
-      "text";
+      "text"
+      "cast";
     grid-template-columns: 1fr;
     gap: 2rem;
 
@@ -56,7 +57,8 @@
         "rating heart"
         "title title"
         "release release"
-        "overview overview";
+        "overview overview"
+        "cast cast";
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(4, min-content);
       gap: 1rem;
@@ -129,11 +131,66 @@
       }
     }
 
+    .movie-cast {
+      grid-area: cast;
+
+      h3 {
+        width: 100%;
+      }
+
+      .cast-wrapper {
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+
+        @media (min-width: $bp-tablet) {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media (min-width: 45rem) {
+          grid-template-columns: repeat(4, 1fr);
+        }
+
+        @media (min-width: $bp-desktop) {
+          grid-template-columns: repeat(8, 1fr);
+        }
+      }
+
+      .actor {
+        // width: 10rem;
+        border-radius: 0.5rem;
+        background-color: $grey-dark;
+        overflow: hidden;
+
+        &-img {
+          display: block;
+          // width: 11.5rem;
+          width: 100%;
+          max-height: 17rem;
+          object-fit: cover;
+        }
+
+        &-text {
+          padding: 1rem;
+
+          .actor-name {
+            font-size: 1rem;
+          }
+          
+          .actor-character {
+            font-size: 0.875rem;
+          }
+        }
+      }
+    }
+
     @media (min-width: $bp-tablet) {
       display: grid;
       grid-template-areas: 
-        "poster text";
-      grid-template-columns: 1fr 2fr;
+        "poster text text"
+        "cast cast cast";
+      grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
       padding: 2rem;
       background-color: rgba($black, 0.5);

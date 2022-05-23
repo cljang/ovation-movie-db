@@ -5,6 +5,7 @@ export const pathToPoster = "https://image.tmdb.org/t/p/w500";
 export const pathToBackdrop780 = "https://image.tmdb.org/t/p/w780";
 export const pathToBackdrop1280 = "https://image.tmdb.org/t/p/w1280";
 export const pathToOriginalImage = "https://image.tmdb.org/t/p/original";
+export const pathToActorProfile = "https://image.tmdb.org/t/p/w185";
 
 // Main Navbar Links
 export const navMainLinks = [

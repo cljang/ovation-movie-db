@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { endpointGetMovies, pathToOriginalImage, pathToPoster } from "../global/globals";
+import { endpointGetMovies, pathToOriginalImage, pathToPoster, pathToActorProfile } from "../global/globals";
 import { API_KEY } from "../global/api-key";
 import { appTitle } from "../global/globals";
+import placeHolderProfile from "../images/placeholder_profile.webp";
+import placeHolderProfileJpg from "../images/placeholder_profile.jpg";
 import MoviePoster from "../components/MoviePoster";
 import MovieRating from "../components/MovieRating";
 import FavouriteHeart from "../components/FavouriteHeart";
@@ -10,8 +12,12 @@ import FavouriteHeart from "../components/FavouriteHeart";
 function PageMovie() {
   const { id } = useParams();
 
+  // Movie object
   const [movie, setMovie] = useState(false);
+  // Background style
   const [style, setStyle] = useState({})
+  // Cast List
+  const [cast, setCast] = useState(false);
 
   const navigate = useNavigate();
 
@@ -40,6 +46,24 @@ function PageMovie() {
     }
 
     fetchMovie();
+  }, [id, navigate])
+
+  // Once id is set, call API to get movie cast 
+  useEffect(() => {
+    const fetchCast = async () => {
+      const res = await fetch(`${endpointGetMovies}${id}/credits?api_key=${API_KEY}`)
+
+      // If Invalid Id, redirect to 404
+      if (res.status !== 200) {
+        navigate("/404")
+      }
+
+      const data = await res.json();
+      const topBilledCast = data.cast.slice(0,8);
+      setCast(topBilledCast);
+    }
+
+    fetchCast();
   }, [id, navigate])
 
   const formatRuntime = (runtimeMinutes) => {
@@ -83,6 +107,28 @@ function PageMovie() {
           </div>
           <p className="movie-overview">{movie.overview ? movie.overview : ""}</p>
         </div>
+        {cast && <section className="movie-cast">
+          <h3>Top Billed Cast</h3>
+          <div className="cast-container">
+            <div className="cast-wrapper">
+              {cast.map((actor) => {
+                return (
+                  <article key={actor.id} className="actor">
+                    <picture>
+                      <source srcSet={actor.profile_path ? `${pathToActorProfile}${actor.profile_path}` : ""} type="image/jpeg" />
+                      <source srcSet={placeHolderProfile} type="image/webp" />
+                      <img src={placeHolderProfileJpg} alt={`${actor.name} profile`} className="actor-img" loading="lazy" />
+                    </picture>
+                    <div className="actor-text">
+                      <h4 className="actor-name">{actor.name}</h4>
+                      <p className="actor-character">{actor.character}</p>
+                    </div>
+                  </article>
+                )
+              })}
+            </div>
+          </div>
+        </section>}
       </div>
     </section>
   )
