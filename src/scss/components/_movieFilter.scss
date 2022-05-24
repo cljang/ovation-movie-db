@@ -7,7 +7,6 @@
   border-radius: 1rem;
   z-index: 1;
   
-  // Temp
   .selector-btn {
     position: relative;
     display: block;
@@ -81,64 +80,33 @@
     &.filter-open {
       transform: scaleY(1);
     }
+
   }
-
-
   
+  // Desktop layout
+  @media (min-width: $bp-laptop) {
+    max-width: 40rem;
+    
+    .selector-btn {
+      display: none;
+    }
 
-  // .filter-background {
-  //   display: none;
-  // }
+    .filters {
+      transform: scaleY(1);
+      position: static;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      margin: 0 auto 2rem;
+      padding: 0.25rem;
+      border-radius: 2rem;
+      transition: none;
 
-  // .movie-filter {
-
-  //   &.active {
-  //     background-color: $blue;
-  //   }
-  // }
-
-  // @media (min-width: $bp-tablet) {
-  //   display: grid;
-  //   grid-template-areas: "popular top_rated upcoming now_playing";
-  //   grid-template-columns: repeat(4, 1fr);
-  //   margin: 0 auto 2rem;
-  //   max-width: 40rem;
-  //   padding: 0.25rem;
-  //   background-color: $grey-blue;
-  //   border-radius: 2rem;
-  //   overflow: hidden;
-  
-  //   .filter-background {
-  //     display: block;
-  //     // position: absolute;
-  //     background-color: $blue;
-  //     border-radius: 2rem;
-  //     transition: left 0.3s ease-in-out;
-  //   }
-
-  //   .movie-filter {
-  //     position: relative;
-  //     padding: 0.5rem;
-  //     background-color: transparent;
-  //     color: $white;
-  //     border: none;
-  //     border-radius: 2rem;
-  //   }
-
-  //   .popular {
-  //     grid-area: popular;
-  //   }
-
-  //   .top_rated {
-  //     grid-area: top_rated;
-  //   }
-
-  //   .upcoming {
-  //     grid-area: upcoming;
-  //   }
-
-  //   .now_playing {
-  //     grid-area: now_playing;
-  //   }
-  // }
+      .filter-btn {
+        border-radius: 2rem;
+        &.active {
+          background-color: $blue;
+        }
+      }
+    }
+  }
 }

@@ -9,11 +9,14 @@ function MovieFilter() {
   const movieFilter = useSelector((state) => state.movieFilter);
   // Button Open
   const [ selectorButtonOpen, setSelectorButtonOpen ] = useState(false);
+  // In desktop layout
+  const [ desktop, setDesktop ] = useState(false)
+  
 
   const dispatch = useDispatch()
 
   // Handle Button Close on Blur
-  const closeButton = () => {
+  const closeFilter = () => {
     setSelectorButtonOpen(false);
   }
 
@@ -27,8 +30,28 @@ function MovieFilter() {
   const handleFilterChange = (e) => {
     e.preventDefault();
     dispatch(setMovieFilter(e.target.value));
-    closeButton();
+    closeFilter();
   }
+
+  // If the window goes to desktop layout, close the filter
+  useEffect(() => {
+    const isDesktop = (e) => {
+      if(e.matches){
+        closeFilter();
+        setDesktop(true)
+      } else {
+        setDesktop(false)
+      }
+    }
+    
+    let mediaQuery = window.matchMedia('(min-width: 56.25rem)');
+
+    isDesktop(mediaQuery);
+
+    mediaQuery.addEventListener('change', isDesktop);
+    // this is the cleanup function to remove the listener
+    return () => mediaQuery.removeEventListener('change', isDesktop);
+  }, [dispatch]);
 
   // Detect click outside of filter
   // https://stackoverflow.com/questions/32553158/detect-click-outside-react-component
@@ -40,7 +63,7 @@ function MovieFilter() {
       // Clicked outside the ref element
       const handleClickOutside = (e) => {
         if (ref.current && !ref.current.contains(e.target)) {
-          closeButton();
+          closeFilter();
         }
       }
       // Bind the event listener
@@ -68,8 +91,8 @@ function MovieFilter() {
             <button key={filter.value} 
                     value={filter.value} 
                     onClick={handleFilterChange} 
-                    className="filter-btn" 
-                    tabIndex={selectorButtonOpen ? 0 : -1}
+                    className={`filter-btn ${(filter.value === movieFilter.value) ? "active": ""}`} 
+                    tabIndex={(selectorButtonOpen || desktop) ? 0 : -1}
             >
               {filter.text}
             </button>
