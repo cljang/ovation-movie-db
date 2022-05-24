@@ -27,7 +27,9 @@
   }
 
   &-overlay {
+    z-index: 1;
     opacity: 0;
+    visibility: hidden;
     // Layout
     display: grid;
     grid-template-areas: 
@@ -47,7 +49,7 @@
     padding: 1rem;
     background-color: rgba($dark-blue, 0.75);
     font-size: 1rem;
-    transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
 
     .movie-rating {
       grid-area: rating;
@@ -95,6 +97,7 @@
     }
     .movie-card-overlay {
       opacity: 1;
+      visibility: visible;
       backdrop-filter: blur(4px)
     }
   }

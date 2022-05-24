@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-function MovieInfoButton( { movie, tabIndex, onBlur, onFocus, disabled } ) {
+function MovieInfoButton( { movie, tabIndex, onBlur, onFocus } ) {
   return (
     movie && 
       <Link 
@@ -9,7 +9,6 @@ function MovieInfoButton( { movie, tabIndex, onBlur, onFocus, disabled } ) {
         tabIndex={tabIndex}
         onBlur={onBlur}
         onFocus={onFocus}
-        style={{pointerEvents: disabled ? "none" : ""}}
       >More Info<span className='screen-reader-text'> about {movie.title}</span>
       </Link>
   )

@@ -68,6 +68,8 @@ function PageMovie() {
     return `${hours}h ${minutes>10 ? minutes : "0" + minutes}m`
   };
 
+
+  console.log(formatRuntime(0));
   // Dynamically set backdrop image
   // const style = {
   //   backgroundImage: `url(${pathToOriginalImage}${movie.backdrop_path})`,
@@ -97,8 +99,8 @@ function PageMovie() {
           <h2 className="movie-title">{movie.title}</h2>
           <div className="movie-release-info">
             <p className="movie-release-date">{movie.release_date}</p>
-            <p className="movie-runtime">{movie.runtime ? formatRuntime(movie.runtime) : ""}</p>
-            {movie.genres && <p className="movie-genres">{movie.genres.map((genre) => genre.name).join(', ')}</p>}
+            {movie.runtime ? <p className="movie-runtime">{formatRuntime(movie.runtime)}</p> : null}
+            {movie.genres && movie.genres.length > 0 && <p className="movie-genres">{movie.genres.map((genre) => genre.name).join(', ')}</p>}
           </div>
           <p className="movie-overview">{movie.overview ? movie.overview : ""}</p>
           {videoLink && 

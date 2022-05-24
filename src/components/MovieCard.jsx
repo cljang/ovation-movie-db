@@ -65,7 +65,6 @@ function MovieCard({movie}) {
           movie={movie}
           onFocus={controlledOpen}
           onBlur={controlledClose}
-          disabled={!cardOpen}
         />
         <h3 className="movie-title">{movie.title}</h3>
         <p className="movie-release-date">{movie.release_date}</p>
@@ -74,7 +73,6 @@ function MovieCard({movie}) {
           movie={movie}
           onFocus={controlledOpen}
           onBlur={controlledClose}
-          disabled={!cardOpen}
         />
       </div>
     </article>

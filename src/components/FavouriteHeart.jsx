@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { addFavourite, removeFavourite } from "../features/favourites/favouritesListSlice";
 
-function FavouriteHeart( { movie, tabIndex, onBlur, onFocus, disabled } ) {
+function FavouriteHeart( { movie, tabIndex, onBlur, onFocus } ) {
   const [favourited, setFavourited] = useState(false)
 
   const favouritesList = useSelector((state) => state.favouritesList.value)
@@ -37,7 +37,6 @@ function FavouriteHeart( { movie, tabIndex, onBlur, onFocus, disabled } ) {
       tabIndex={tabIndex}
       onBlur={onBlur}
       onFocus={onFocus}
-      style={{pointerEvents: disabled ? "none" : ""}}
     >
       {favourited ? <FaHeart /> : <FaRegHeart />}
       <span className="screen-reader-text">Add {movie.title} to favourites</span>
