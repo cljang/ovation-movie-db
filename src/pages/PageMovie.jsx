@@ -37,7 +37,7 @@ function PageMovie() {
   // Once id is set, call API to get movie details 
   useEffect(() => {
     const fetchMovie = async () => {
-      const res = await fetch(`${endpointGetMovies}${id}?api_key=${API_KEY}&append_to_response=videos`)
+      const res = await fetch(`${endpointGetMovies}${id}?api_key=${API_KEY}&append_to_response=videos,credits`)
 
       // If Invalid Id, redirect to 404
       if (res.status !== 200) {
@@ -46,31 +46,19 @@ function PageMovie() {
 
       const data = await res.json();
       setMovie(data);
+
+      // Get Trailer
       const trailers = data.videos.results.filter(video => (video.type==="Trailer" && video.official === true && video.site === "YouTube"));
       if (trailers.length > 0) {
         setVideoLink(`https://www.youtube.com/watch?v=${trailers[0].key}`);
       }
-    }
 
-    fetchMovie();
-  }, [id, navigate])
-
-  // Once id is set, call API to get movie cast 
-  useEffect(() => {
-    const fetchCast = async () => {
-      const res = await fetch(`${endpointGetMovies}${id}/credits?api_key=${API_KEY}`)
-
-      // If Invalid Id, redirect to 404
-      if (res.status !== 200) {
-        navigate("/404")
-      }
-
-      const data = await res.json();
-      const topBilledCast = data.cast.slice(0,8);
+      // Get Cast
+      const topBilledCast = data.credits.cast.slice(0,8);
       setCast(topBilledCast);
     }
 
-    fetchCast();
+    fetchMovie();
   }, [id, navigate])
 
   const formatRuntime = (runtimeMinutes) => {
