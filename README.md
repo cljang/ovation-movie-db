@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# Description
+
+This project is a movie database web app that allows users to view information about and track their favourite movies. This project was designed and developed by Clayton Jang.
+
+This project uses the [TMDb API](https://www.themoviedb.org/) but is not endorsed or certified by TMDb.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Pages
 
-In the project directory, you can run:
+There are multiple pages in this app:
 
-### `npm start`
+### Home Page
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The home page displays a list of the current Popular movies. Using a filter selector, the user may change the movie list filter to show Top Rated, Upcoming, or Now Playing movies.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Each movie displays as a card with the movie's poster (or a placeholder if no poster is available). Clicking on or hovering a card will display an overlay with information about the movie. This overlay has a Favourite button to add/remove a movie to the user's favourite list (see [Favourite Page](#favourite-page)) and a More Info button which links to the [Individual Movie Page](#individual-movie-page).
 
-### `npm test`
+At the top of the page, there is a carousel that features the first three movies in the current movie list. This carousel was implemented using [React Slick](https://react-slick.neostack.com/).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+At the bottom of the page, there is a load more button that allows users to load more movies into the list.
 
-### `npm run build`
+### About Page
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The About page displays a description about the web app and an attribution to TMDb.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Favourite Page
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The Favourite page displays a list of the user's favourited movies (if any). When user's add a movie by clicking its Favourite button, the movie is added to their favourite list, stored in the browser's localStorage. This allows their favourites to persist across browser sessions. When no movies are added to the list, this is indicated with a message and a link back to the home page.
 
-### `npm run eject`
+### Individual Movie Page
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The Individual Movie Page is specific to each movie. Using a URL parameter, the movie's ID is passed to the individual page. On this page, we display extra details about the movie, such as runtime, genres, and the top billed cast. We also provide a YouTube link to the movie's trailer (if any).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Search Page
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The Search page displays results when a user searches for a movie. In the header of the app, there is a search bar that allows users to search for movies by name.
