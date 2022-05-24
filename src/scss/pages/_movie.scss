@@ -58,9 +58,9 @@
         "title title"
         "release release"
         "overview overview"
-        "cast cast";
+        "trailer trailer";
       grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(4, min-content);
+      grid-template-rows: repeat(5, min-content);
       gap: 1rem;
   
       .movie-rating {
@@ -109,6 +109,27 @@
       .movie-overview {
         grid-area: overview;
         margin: 0;
+      }
+
+      .movie-trailer {
+        grid-area: trailer;
+        display: flex;
+        align-items: center;
+        justify-self: center;
+        gap: 1rem;
+
+        svg {
+          display: block;
+          font-size: 2rem;
+        }
+
+        p {
+          margin: 0;
+        }
+
+        @media (min-width: $bp-tablet) {
+          justify-self: flex-start;
+        }
       }
       
     

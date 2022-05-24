@@ -8,6 +8,7 @@ import placeHolderProfileJpg from "../images/placeholder_profile.jpg";
 import MoviePoster from "../components/MoviePoster";
 import MovieRating from "../components/MovieRating";
 import FavouriteHeart from "../components/FavouriteHeart";
+import { FaYoutube } from "react-icons/fa"
 
 function PageMovie() {
   const { id } = useParams();
@@ -18,6 +19,8 @@ function PageMovie() {
   const [style, setStyle] = useState({})
   // Cast List
   const [cast, setCast] = useState(false);
+  // Cast List
+  const [videoLink, setVideoLink] = useState(false);
 
   const navigate = useNavigate();
 
@@ -34,7 +37,7 @@ function PageMovie() {
   // Once id is set, call API to get movie details 
   useEffect(() => {
     const fetchMovie = async () => {
-      const res = await fetch(`${endpointGetMovies}${id}?api_key=${API_KEY}`)
+      const res = await fetch(`${endpointGetMovies}${id}?api_key=${API_KEY}&append_to_response=videos`)
 
       // If Invalid Id, redirect to 404
       if (res.status !== 200) {
@@ -43,6 +46,10 @@ function PageMovie() {
 
       const data = await res.json();
       setMovie(data);
+      const trailers = data.videos.results.filter(video => (video.type==="Trailer" && video.official === true && video.site === "YouTube"));
+      if (trailers.length > 0) {
+        setVideoLink(`https://www.youtube.com/watch?v=${trailers[0].key}`);
+      }
     }
 
     fetchMovie();
@@ -106,6 +113,17 @@ function PageMovie() {
             {movie.genres && <p className="movie-genres">{movie.genres.map((genre) => genre.name).join(', ')}</p>}
           </div>
           <p className="movie-overview">{movie.overview ? movie.overview : ""}</p>
+          {videoLink && 
+            <a 
+              href={videoLink} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="movie-trailer btn"
+            >
+              <FaYoutube className="trailer-icon" aria-hidden="true" />
+              <p>Official Trailer</p>
+            </a>
+          }
         </div>
         {cast && <section className="movie-cast">
           <h3>Top Billed Cast</h3>
