@@ -59,7 +59,7 @@ const PageHome = () => {
     <section className="page page-home">
       <h2 className="screen-reader-text">Home</h2>
       {movieList && <MovieCarousel movieList={movieList.slice(0,3)}/>}
-      <div className="main-content">
+      {movieList && <div className="main-content">
         <MovieFilter />
         {movieList && <MovieContainer movieList={movieList} />}
         {canLoadMore && <button 
@@ -68,7 +68,7 @@ const PageHome = () => {
         >
           Load more <span className="screen-reader-text">movies</span>
         </button>}
-      </div>
+      </div>}
     </section>
   );
 
