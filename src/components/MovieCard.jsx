@@ -67,7 +67,7 @@ function MovieCard({movie}) {
           onBlur={controlledClose}
         />
         <h3 className="movie-title">{movie.title}</h3>
-        <p className="movie-release-date">{movie.release_date}</p>
+        {movie.release_date && <p className="movie-release-date">{movie.release_date}</p>}
         {movie.overview && <p className="movie-overview">{movie.overview}</p>}
         <MovieInfoButton 
           movie={movie}

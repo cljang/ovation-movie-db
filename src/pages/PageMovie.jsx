@@ -96,7 +96,7 @@ function PageMovie() {
           <FavouriteHeart movie={movie}/>
           <h2 className="movie-title">{movie.title}</h2>
           <div className="movie-release-info">
-            <p className="movie-release-date">{movie.release_date}</p>
+            {movie.release_date && <p className="movie-release-date">{movie.release_date}</p>}
             {movie.runtime ? <p className="movie-runtime">{formatRuntime(movie.runtime)}</p> : null}
             {movie.genres && movie.genres.length > 0 && <p className="movie-genres">{movie.genres.map((genre) => genre.name).join(', ')}</p>}
           </div>
