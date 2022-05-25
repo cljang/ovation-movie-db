@@ -113,7 +113,7 @@ function PageMovie() {
             </a>
           }
         </div>
-        {cast && <section className="movie-cast">
+        {cast && cast.length > 0 && <section className="movie-cast">
           <h3>Top Billed Cast</h3>
           <div className="cast-container">
             <div className="cast-wrapper">
