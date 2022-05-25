@@ -96,6 +96,7 @@
       position: static;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
+      gap: 0.25rem;
       margin: 0 auto 2rem;
       padding: 0.25rem;
       border-radius: 2rem;
