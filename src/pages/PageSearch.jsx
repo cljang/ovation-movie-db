@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { appTitle } from "../global/globals";
 import { endpointSearchMovies } from "../global/globals";
@@ -12,7 +12,7 @@ const PageSearch = () => {
   // Flag for if more pages can be loaded
   const [canLoadMore, setCanLoadMore] = useState(true);
   // Last loaded page
-  const [moviePage, setMoviePage] = useState(1);
+  const moviePage = useRef(1);
   // Total Results
   const [totalResults, setTotalResults] = useState(false)
 
@@ -32,6 +32,8 @@ const PageSearch = () => {
     const selectedMovies = data.results;
     if (page === 1) {
       setResultsList(selectedMovies)
+      // Set total results
+      setTotalResults(data.total_results);
     } else {
       setResultsList(movieList => [...movieList, ...selectedMovies]);
     }
@@ -39,20 +41,17 @@ const PageSearch = () => {
     if (page >= data.total_pages) {
       setCanLoadMore(false)
     }
-    // Set total results
-    setTotalResults(data.total_results);
   }, [query])
 
   // Handle loadMore button
   const handleLoadMore = () => {
-    fetchMovies(moviePage + 1);
-    setMoviePage(moviePage + 1);
+    fetchMovies(++moviePage.current);
   }
 
-  // Re-fetch movies if the selectedMovieFilter changes - this will also occur on page load
+  // Re-fetch movies if the query changes - this will also occur on page load
   useEffect(() => {
-    fetchMovies(1)
-    setMoviePage(1);
+    moviePage.current = 1;
+    fetchMovies(moviePage.current)
     setCanLoadMore(true)
   }, [fetchMovies, query])
 
