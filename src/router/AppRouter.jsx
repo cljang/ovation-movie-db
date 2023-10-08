@@ -10,18 +10,20 @@ import Page404 from "../pages/Page404";
 
 function AppRouter() {
   return (
-    <BrowserRouter basename="/ovation">
-      <a href="#site-main" className="screen-reader-text">Skip to content</a>
+    <BrowserRouter>
+      <a href="#site-main" className="screen-reader-text">
+        Skip to content
+      </a>
       <div className="site-wrapper">
         <Header />
         <main id="site-main">
           <Routes>
-              <Route path="/" element={<PageHome />} />
-              <Route path="/about" element={<PageAbout />} />
-              <Route path="/favourites" element={<PageFavourite />} />
-              <Route path="/movie/:id" element={<PageMovie />} />
-              <Route path="/search/:query" element={<PageSearch />} />
-              <Route path="*" element={<Page404 />} />
+            <Route path="/" element={<PageHome />} />
+            <Route path="/about" element={<PageAbout />} />
+            <Route path="/favourites" element={<PageFavourite />} />
+            <Route path="/movie/:id" element={<PageMovie />} />
+            <Route path="/search/:query" element={<PageSearch />} />
+            <Route path="*" element={<Page404 />} />
           </Routes>
         </main>
         <Footer />

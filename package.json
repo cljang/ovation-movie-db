@@ -1,6 +1,6 @@
 {
   "name": "ovation-movie-db",
-  "homepage": "/ovation",
+  "homepage": "/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
